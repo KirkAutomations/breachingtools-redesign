@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="blackout">
 <head>
 <meta charset="UTF-8">
@@ -17,1805 +17,597 @@
 <meta name="twitter:description" content="Built by Breachers for Breachers. US-made tactical breaching tools with lifetime guarantee.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "BCM Inc. / Double-Tap Breaching Tools",
   "url": "https://www.breachingtools.com",
-  "logo": "https://www.breachingtools.com/logo.png",
   "description": "Manufacturer of tactical breaching tools for law enforcement, military, and fire departments. US-made with lifetime guarantee.",
   "foundingDate": "2004",
   "foundingLocation": "Fayetteville, NC",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "email": "customerservice@bcm8.com",
-    "contactType": "Customer Service"
-  },
-  "sameAs": [
-    "https://www.instagram.com/breachingtools/",
-    "https://www.facebook.com/breachingtoolsnc",
-    "https://www.tiktok.com/@breaching.tools",
-    "https://www.linkedin.com/company/breaching-tools",
-    "https://www.youtube.com/@brianclement3081"
-  ]
+  "contactPoint": {"@type": "ContactPoint", "email": "customerservice@bcm8.com", "contactType": "Customer Service"},
+  "sameAs": ["https://www.instagram.com/breachingtools/","https://www.facebook.com/breachingtoolsnc","https://www.tiktok.com/@breaching.tools","https://www.linkedin.com/company/breaching-tools","https://www.youtube.com/@brianclement3081"]
 }
 </script>
 <style>
-/* ========== RESET & BASE ========== */
+/* ========== RESET ========== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;transition:background .5s ease,color .5s ease}
-a{color:var(--accent);text-decoration:none;transition:color .3s}
-a:hover{color:var(--accent-glow)}
-h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.3}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;transition:background .4s,color .4s}
+a{color:var(--accent);text-decoration:none;transition:color .2s}
+a:hover{color:var(--accent-hi)}
+h1,h2,h3,h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;line-height:1.2}
 img{max-width:100%;display:block}
 ul{list-style:none}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
-/* ========== SKIP LINK ========== */
-.skip-link{position:absolute;top:-100%;left:16px;background:var(--accent);color:#fff;padding:8px 16px;z-index:10000;border-radius:0 0 8px 8px;font-weight:600;transition:top .3s}
-.skip-link:focus{top:0}
-
-/* ========== THEME VARIABLES ========== */
-/* === BLACKOUT (default) === */
+/* ========== THEMES ========== */
 [data-theme="blackout"]{
-  --bg:#0a0a0a;--bg-alt:#111111;--text:#E8E6E1;--text-muted:#8A8A8A;
-  --accent:#FF6B00;--accent-glow:#FF8C33;--card-bg:rgba(17,17,17,0.9);
-  --card-border:rgba(255,107,0,0.15);--nav-bg:rgba(10,10,10,0.92);
-  --hero-overlay:rgba(10,10,10,0.7);--particle-color:255,107,0;
-  --section-divider:rgba(255,107,0,0.1);
+  --bg:#0a0a0a;--bg-alt:#0f0f0f;--bg-card:#141414;--text:#d4d0c8;--text-muted:#6b6b6b;
+  --accent:#D4A017;--accent-hi:#E8B42A;--accent-dim:rgba(212,160,23,0.12);
+  --border:#1e1e1e;--border-accent:rgba(212,160,23,0.25);
+  --nav-bg:rgba(10,10,10,0.95);--grain-opacity:0.04;
 }
-/* === GUNMETAL === */
 [data-theme="gunmetal"]{
-  --bg:#1a1d23;--bg-alt:#22262e;--text:#C8CCD4;--text-muted:#7A8190;
-  --accent:#4FC3F7;--accent-glow:#81D4FA;--card-bg:rgba(34,38,46,0.9);
-  --card-border:rgba(79,195,247,0.15);--nav-bg:rgba(26,29,35,0.92);
-  --hero-overlay:rgba(26,29,35,0.7);--particle-color:79,195,247;
-  --section-divider:rgba(79,195,247,0.1);
+  --bg:#12141a;--bg-alt:#181b22;--bg-card:#1c1f28;--text:#c8ccd4;--text-muted:#5a6070;
+  --accent:#C41E3A;--accent-hi:#D93250;--accent-dim:rgba(196,30,58,0.12);
+  --border:#242830;--border-accent:rgba(196,30,58,0.25);
+  --nav-bg:rgba(18,20,26,0.95);--grain-opacity:0.035;
 }
-/* === OPS GREEN === */
 [data-theme="ops-green"]{
-  --bg:#0d1a0f;--bg-alt:#142316;--text:#D0D0C8;--text-muted:#7A8A70;
-  --accent:#C9A94E;--accent-glow:#DFC06A;--card-bg:rgba(20,35,22,0.9);
-  --card-border:rgba(201,169,78,0.15);--nav-bg:rgba(13,26,15,0.92);
-  --hero-overlay:rgba(13,26,15,0.7);--particle-color:201,169,78;
-  --section-divider:rgba(201,169,78,0.1);
+  --bg:#0c120c;--bg-alt:#111a11;--bg-card:#162016;--text:#c8c4b8;--text-muted:#606850;
+  --accent:#BFA67A;--accent-hi:#D4BC92;--accent-dim:rgba(191,166,122,0.12);
+  --border:#1e261e;--border-accent:rgba(191,166,122,0.25);
+  --nav-bg:rgba(12,18,12,0.95);--grain-opacity:0.045;
 }
 
-/* ========== LOADING SCREEN ========== */
-#loading-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99999;transition:opacity .6s ease}
-#loading-screen.fade-out{opacity:0;pointer-events:none}
-#loading-screen .logo-text{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--accent);letter-spacing:4px;text-transform:uppercase}
-#loading-screen .logo-sub{font-size:.85rem;color:var(--text-muted);letter-spacing:6px;text-transform:uppercase;margin-top:8px}
-#loading-screen .crosshair-spinner{width:60px;height:60px;margin-top:24px;position:relative}
-#loading-screen .crosshair-spinner svg{width:60px;height:60px;color:var(--accent);animation:spin 2s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
+/* ========== GRAIN OVERLAY ========== */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:var(--grain-opacity);mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
 
 /* ========== SCROLL PROGRESS ========== */
-#scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-glow));width:0%;z-index:9999;transition:width .1s linear}
-
-/* ========== CURSOR GLOW ========== */
-#cursor-glow{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(var(--particle-color),0.08) 0%,transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:opacity .3s;opacity:0}
-body:hover #cursor-glow{opacity:1}
+#scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0%;z-index:9999;transition:width .1s linear}
 
 /* ========== NAV ========== */
-.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;transition:all .4s ease}
-.nav.scrolled{background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 2px 20px rgba(0,0,0,0.3);padding:12px 40px}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--text);letter-spacing:2px;display:flex;align-items:center;gap:10px}
-.nav-logo svg{width:32px;height:32px;color:var(--accent)}
-.nav-logo span{color:var(--accent)}
-.nav-links{display:flex;align-items:center;gap:28px}
-.nav-links a{color:var(--text-muted);font-size:.85rem;font-weight:500;letter-spacing:.5px;text-transform:uppercase;transition:color .3s}
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text);letter-spacing:3px;display:flex;align-items:center;gap:10px;text-transform:uppercase}
+.nav-logo svg{width:24px;height:24px;color:var(--accent)}
+.nav-logo .accent{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{color:var(--text-muted);font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover{color:var(--accent)}
-.nav-cta-btn{background:var(--accent);color:#fff !important;padding:10px 24px;border-radius:8px;font-weight:600;font-size:.85rem;letter-spacing:.5px;transition:all .3s}
-.nav-cta-btn:hover{background:var(--accent-glow);transform:translateY(-1px);box-shadow:0 4px 16px rgba(var(--particle-color),0.3)}
-
-/* ========== HAMBURGER ========== */
-.hamburger{display:none;flex-direction:column;gap:5px;width:28px;cursor:pointer;z-index:1001}
-.hamburger span{display:block;width:100%;height:2px;background:var(--text);transition:all .3s ease;transform-origin:center}
+.nav-cta{background:var(--accent);color:#0a0a0a;padding:8px 20px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:all .2s}
+.nav-cta:hover{background:var(--accent-hi);color:#0a0a0a}
+.hamburger{display:none;flex-direction:column;gap:5px;width:24px;cursor:pointer;z-index:1001}
+.hamburger span{display:block;width:100%;height:2px;background:var(--text);transition:all .3s;transform-origin:center}
 .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.active span:nth-child(2){opacity:0}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-
-/* ========== MOBILE NAV OVERLAY ========== */
-.mobile-nav{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;visibility:hidden;transition:all .4s ease}
+.mobile-nav{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;visibility:hidden;transition:all .3s}
 .mobile-nav.active{opacity:1;visibility:visible}
-.mobile-nav a{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--text);transition:color .3s}
+.mobile-nav a{font-family:'Oswald',sans-serif;font-size:1.6rem;color:var(--text);letter-spacing:3px;text-transform:uppercase}
 .mobile-nav a:hover{color:var(--accent)}
 
 /* ========== HERO ========== */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;overflow:hidden}
-.hero-bg-pattern{position:absolute;inset:0;opacity:.04;background-image:
-  linear-gradient(30deg,var(--accent) 12%,transparent 12.5%,transparent 87%,var(--accent) 87.5%,var(--accent)),
-  linear-gradient(150deg,var(--accent) 12%,transparent 12.5%,transparent 87%,var(--accent) 87.5%,var(--accent)),
-  linear-gradient(30deg,var(--accent) 12%,transparent 12.5%,transparent 87%,var(--accent) 87.5%,var(--accent)),
-  linear-gradient(150deg,var(--accent) 12%,transparent 12.5%,transparent 87%,var(--accent) 87.5%,var(--accent)),
-  linear-gradient(60deg,rgba(var(--particle-color),0.4) 25%,transparent 25.5%,transparent 75%,rgba(var(--particle-color),0.4) 75%,rgba(var(--particle-color),0.4)),
-  linear-gradient(60deg,rgba(var(--particle-color),0.4) 25%,transparent 25.5%,transparent 75%,rgba(var(--particle-color),0.4) 75%,rgba(var(--particle-color),0.4));
-  background-size:80px 140px;
-  background-position:0 0,0 0,40px 70px,40px 70px,0 0,40px 70px}
-.hero-content{position:relative;z-index:2;max-width:820px}
-.hero-label{font-size:.8rem;text-transform:uppercase;letter-spacing:5px;color:var(--accent);font-weight:600;margin-bottom:16px}
-.hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;margin-bottom:16px;background:linear-gradient(135deg,var(--text),var(--accent),var(--text),var(--accent-glow));background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 6s ease infinite}
-@keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.hero .sub-tagline{font-size:1.1rem;color:var(--text-muted);margin-bottom:8px;letter-spacing:2px;text-transform:uppercase;font-weight:500}
-.hero .typed-line{font-size:clamp(1rem,2.2vw,1.3rem);color:var(--text-muted);min-height:2em;margin-bottom:32px}
-.hero .typed-line .cursor-blink{display:inline-block;width:2px;height:1.2em;background:var(--accent);vertical-align:text-bottom;animation:blink 1s step-end infinite;margin-left:2px}
-@keyframes blink{50%{opacity:0}}
-.btn-primary{display:inline-block;background:var(--accent);color:#fff;padding:16px 40px;border-radius:8px;font-size:1rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:all .3s;position:relative;overflow:hidden}
-.btn-primary:hover{background:var(--accent-glow);transform:translateY(-2px);box-shadow:0 8px 30px rgba(var(--particle-color),0.35)}
-.btn-primary .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);transform:scale(0);animation:ripple-anim .6s ease-out}
-@keyframes ripple-anim{to{transform:scale(4);opacity:0}}
-
-/* ========== SECTION BASE ========== */
-section{position:relative;z-index:2;padding:100px 24px}
-.section-alt{background:var(--bg-alt)}
-.container{max-width:1140px;margin:0 auto}
-.section-label{font-size:.8rem;text-transform:uppercase;letter-spacing:3px;color:var(--accent);font-weight:600;margin-bottom:8px}
-.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:16px}
-.section-subtitle{color:var(--text-muted);font-size:1.05rem;max-width:600px;margin-bottom:48px}
-.text-center{text-align:center}
-.text-center .section-subtitle{margin-left:auto;margin-right:auto}
-.section-divider{height:1px;background:var(--section-divider);border:none;margin:0}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,var(--bg) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:800px}
+.hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--accent)}
+.hero h1{font-size:clamp(2.6rem,6vw,4.5rem);font-weight:700;letter-spacing:3px;margin-bottom:16px;color:var(--text)}
+.hero .sub{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;color:var(--text-muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:40px}
+.hero-cta{display:inline-block;background:var(--accent);color:#0a0a0a;padding:14px 40px;font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .2s;border:2px solid var(--accent)}
+.hero-cta:hover{background:transparent;color:var(--accent)}
 
 /* ========== STATS BAR ========== */
-.stats-bar{background:var(--bg-alt);border-top:1px solid var(--section-divider);border-bottom:1px solid var(--section-divider)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;padding:24px 0}
-.stat-item .stat-number{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--accent)}
-.stat-item .stat-label{font-size:.9rem;color:var(--text-muted);margin-top:4px}
+.stats-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-alt)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto}
+.stat-item{padding:28px 16px;text-align:center;border-right:1px solid var(--border)}
+.stat-item:last-child{border-right:none}
+.stat-number{font-family:'Oswald',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:var(--accent);letter-spacing:1px}
+.stat-label{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
 
-/* ========== CARDS ========== */
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
-.card{background:var(--card-bg);backdrop-filter:blur(12px);border:1px solid var(--card-border);border-radius:12px;padding:40px 32px;transition:all .4s ease;transform-style:preserve-3d;perspective:1000px;position:relative;overflow:hidden}
-.card:hover{border-color:var(--accent);box-shadow:0 12px 40px rgba(var(--particle-color),0.12)}
-.card-icon{width:48px;height:48px;color:var(--accent);margin-bottom:20px}
-.card h3{font-size:1.3rem;margin-bottom:12px}
-.card p{color:var(--text-muted);font-size:.95rem}
+/* ========== SECTION ========== */
+section{position:relative;z-index:2;padding:80px 24px}
+.section-alt{background:var(--bg-alt)}
+.container{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+.section-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:2px;margin-bottom:12px;color:var(--text)}
+.section-desc{color:var(--text-muted);font-size:.95rem;max-width:580px;margin-bottom:48px}
+.text-center{text-align:center}
+.text-center .section-desc{margin-left:auto;margin-right:auto}
+.divider{height:1px;background:var(--border);border:none;margin:0}
 
 /* ========== PRODUCT CARDS ========== */
-.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
-.product-card{background:var(--card-bg);backdrop-filter:blur(12px);border:1px solid var(--card-border);border-radius:12px;padding:32px 24px;text-align:center;transition:all .4s ease;position:relative;overflow:hidden}
-.product-card:hover{border-color:var(--accent);box-shadow:0 12px 40px rgba(var(--particle-color),0.12);transform:translateY(-4px)}
-.product-card .product-icon{width:56px;height:56px;color:var(--accent);margin:0 auto 16px}
-.product-card .product-category{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-weight:600;margin-bottom:8px}
-.product-card h3{font-size:1.1rem;margin-bottom:8px;font-family:'Inter',sans-serif;font-weight:600}
-.product-card .product-price{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--accent);margin-bottom:16px}
-.product-card .product-link{display:inline-block;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);border:1px solid var(--card-border);padding:8px 20px;border-radius:6px;transition:all .3s}
-.product-card .product-link:hover{border-color:var(--accent);color:var(--accent)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2px;background:var(--border)}
+.product-card{background:var(--bg-card);padding:24px 20px;text-align:center;transition:background .2s;position:relative}
+.product-card:hover{background:var(--bg-alt)}
+.product-card::after{content:'';position:absolute;bottom:0;left:20%;right:20%;height:1px;background:var(--accent);opacity:0;transition:opacity .2s}
+.product-card:hover::after{opacity:1}
+.product-card .p-icon{width:48px;height:48px;color:var(--accent);margin:0 auto 12px;opacity:.7}
+.product-card .p-cat{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:4px}
+.product-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;color:var(--text)}
+.product-card .p-price{font-family:'Oswald',sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent);margin-bottom:12px}
+.product-card .p-link{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border);padding-bottom:2px;transition:all .2s}
+.product-card .p-link:hover{color:var(--accent);border-color:var(--accent)}
 
-/* ========== FULL CATALOG GRID ========== */
-.catalog-section{padding:60px 24px}
-.catalog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:32px}
-.catalog-item{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;transition:all .3s}
-.catalog-item:hover{border-color:var(--accent)}
-.catalog-item .cat-name{font-size:.9rem;font-weight:500}
-.catalog-item .cat-price{color:var(--accent);font-weight:700;font-size:.95rem}
+/* ========== FULL CATALOG ========== */
+.catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--border);margin-top:32px}
+.catalog-item{background:var(--bg-card);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.catalog-item:hover{background:var(--bg-alt)}
+.catalog-item .c-name{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;color:var(--text)}
+.catalog-item .c-price{font-family:'Oswald',sans-serif;font-weight:700;color:var(--accent);font-size:.9rem}
 
-/* ========== VALUE PROPS / FEATURES ========== */
-.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
-.value-item{text-align:center}
-.value-icon{width:64px;height:64px;color:var(--accent);margin:0 auto 20px;padding:14px;border:2px solid var(--card-border);border-radius:16px;transition:all .3s}
-.value-item:hover .value-icon{border-color:var(--accent);background:rgba(var(--particle-color),0.08)}
+/* ========== FEATURE CARDS ========== */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.feature-card{background:var(--bg-card);padding:36px 28px;transition:background .2s}
+.feature-card:hover{background:var(--bg-alt)}
+.feature-card .f-icon{width:40px;height:40px;color:var(--accent);margin-bottom:16px;opacity:.8}
+.feature-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:1.5px;font-weight:600;margin-bottom:8px}
+.feature-card p{color:var(--text-muted);font-size:.85rem;line-height:1.6}
 
 /* ========== ABOUT ========== */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.about-badge{display:inline-block;background:rgba(var(--particle-color),0.1);border:1px solid var(--card-border);border-radius:10px;padding:16px 24px;margin-top:24px}
-.about-badge strong{color:var(--accent)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.about-text p{color:var(--text-muted);font-size:.9rem;line-height:1.8;margin-bottom:16px}
+.about-badge{display:inline-block;background:var(--accent-dim);border-left:3px solid var(--accent);padding:12px 20px;margin-top:16px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;color:var(--text)}
+.about-sidebar{display:flex;flex-direction:column;gap:2px}
+.about-stat{background:var(--bg-card);border-left:3px solid var(--accent);padding:20px 24px}
+.about-stat h4{font-family:'Oswald',sans-serif;font-size:1.1rem;letter-spacing:1px;color:var(--accent);margin-bottom:4px}
+.about-stat p{color:var(--text-muted);font-size:.82rem;line-height:1.5}
 
-/* ========== TESTIMONIALS ========== */
-.testimonial-card{background:var(--card-bg);backdrop-filter:blur(12px);border:1px solid var(--card-border);border-radius:12px;padding:48px 40px;position:relative;max-width:800px;margin:0 auto}
-.testimonial-card .quote-icon{color:var(--accent);opacity:.3;margin-bottom:16px}
-.testimonial-card blockquote{font-style:italic;color:var(--text);font-size:1.1rem;line-height:1.8;margin-bottom:24px}
-.testimonial-author{font-weight:600;font-size:1rem;color:var(--accent)}
-.testimonial-role{font-size:.85rem;color:var(--text-muted);margin-top:4px}
+/* ========== TESTIMONIAL ========== */
+.testimonial-block{max-width:800px;margin:0 auto;background:var(--bg-card);border-left:3px solid var(--accent);padding:40px 36px;position:relative}
+.testimonial-block::before{content:'\201C';position:absolute;top:12px;left:20px;font-family:'Oswald',sans-serif;font-size:4rem;color:var(--accent);opacity:.2;line-height:1}
+.testimonial-block blockquote{font-style:italic;color:var(--text);font-size:.95rem;line-height:1.8;margin-bottom:20px;padding-left:8px}
+.testimonial-block .t-author{font-family:'Oswald',sans-serif;font-size:.9rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent)}
+.testimonial-block .t-role{font-size:.78rem;color:var(--text-muted);margin-top:4px}
 
 /* ========== GUARANTEE ========== */
-.guarantee-box{background:var(--card-bg);border:2px solid var(--accent);border-radius:16px;padding:48px 40px;text-align:center;max-width:800px;margin:0 auto;position:relative;overflow:hidden}
-.guarantee-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.guarantee-box .guarantee-icon{width:80px;height:80px;color:var(--accent);margin:0 auto 24px}
-.guarantee-box h3{font-size:1.8rem;margin-bottom:16px}
-.guarantee-box p{color:var(--text-muted);font-size:1rem;line-height:1.8;max-width:600px;margin:0 auto}
-.guarantee-box .guarantee-stat{font-family:'Playfair Display',serif;font-size:2rem;color:var(--accent);font-weight:700;margin-top:24px}
+.guarantee-block{max-width:800px;margin:0 auto;text-align:center;border:1px solid var(--border);padding:48px 40px;position:relative}
+.guarantee-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent)}
+.guarantee-block .g-icon{width:64px;height:64px;color:var(--accent);margin:0 auto 20px}
+.guarantee-block h3{margin-bottom:12px}
+.guarantee-block p{color:var(--text-muted);font-size:.9rem;line-height:1.8;max-width:580px;margin:0 auto}
+.guarantee-block .g-stat{font-family:'Oswald',sans-serif;font-size:2rem;color:var(--accent);font-weight:700;margin-top:20px;letter-spacing:2px}
 
-/* ========== CTA SECTION ========== */
-.cta-section{background:linear-gradient(135deg,var(--bg),var(--bg-alt));text-align:center}
+/* ========== CTA ========== */
+.cta-section{text-align:center;background:var(--bg-alt);border-top:1px solid var(--border)}
+.cta-btns{display:flex;gap:2px;justify-content:center;margin-top:8px}
+.cta-btns a{padding:14px 36px;font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .2s}
+.cta-primary{background:var(--accent);color:#0a0a0a;border:2px solid var(--accent)}
+.cta-primary:hover{background:transparent;color:var(--accent)}
+.cta-secondary{background:transparent;color:var(--text-muted);border:2px solid var(--border)}
+.cta-secondary:hover{border-color:var(--accent);color:var(--accent)}
 
 /* ========== FOOTER ========== */
-.footer{background:var(--bg-alt);border-top:1px solid var(--section-divider);padding:60px 24px 32px;position:relative;z-index:2}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1140px;margin:0 auto}
-.footer h4{font-size:.85rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:16px}
-.footer a{color:var(--text-muted);font-size:.9rem;display:block;margin-bottom:8px;transition:color .3s}
+.footer{background:var(--bg-alt);border-top:1px solid var(--border);padding:48px 24px 24px;position:relative;z-index:2}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1100px;margin:0 auto}
+.footer h4{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.footer a{color:var(--text-muted);font-size:.82rem;display:block;margin-bottom:6px;transition:color .2s}
 .footer a:hover{color:var(--accent)}
-.footer-about p{color:var(--text-muted);font-size:.85rem;line-height:1.6}
-.footer-bottom{max-width:1140px;margin:40px auto 0;padding-top:24px;border-top:1px solid var(--section-divider)}
-.footer-credit{text-align:center;color:var(--text-muted);font-size:.8rem;margin-top:16px}
-.footer-social{display:flex;gap:16px;margin-top:16px}
-.footer-social a{width:36px;height:36px;border:1px solid var(--card-border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .3s}
+.footer-about p{color:var(--text-muted);font-size:.8rem;line-height:1.6}
+.footer-social{display:flex;gap:12px;margin-top:12px}
+.footer-social a{width:32px;height:32px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .2s}
 .footer-social a:hover{border-color:var(--accent);color:var(--accent)}
-.footer-social a svg{width:18px;height:18px}
+.footer-social a svg{width:16px;height:16px}
+.footer-bottom{max-width:1100px;margin:32px auto 0;padding-top:16px;border-top:1px solid var(--border);text-align:center}
+.footer-credit{color:var(--text-muted);font-size:.72rem;letter-spacing:.5px}
 
-/* ========== THEME SWITCHER (right rail) ========== */
-.theme-switcher{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:9000;display:flex;flex-direction:column;align-items:center;gap:12px;background:rgba(var(--particle-color),0.06);backdrop-filter:blur(16px);border:1px solid var(--card-border);border-radius:20px;padding:16px 10px}
-.theme-switcher .label{writing-mode:vertical-rl;text-orientation:mixed;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-bottom:4px}
-.theme-dot{width:20px;height:20px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .3s;position:relative}
-.theme-dot:hover{transform:scale(1.2)}
-.theme-dot.active{border-color:#fff;box-shadow:0 0 12px rgba(var(--particle-color),0.5)}
-.theme-dot[data-theme="blackout"]{background:linear-gradient(135deg,#0a0a0a,#FF6B00)}
-.theme-dot[data-theme="gunmetal"]{background:linear-gradient(135deg,#1a1d23,#4FC3F7)}
-.theme-dot[data-theme="ops-green"]{background:linear-gradient(135deg,#0d1a0f,#C9A94E)}
+/* ========== THEME SWITCHER ========== */
+.theme-switch{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:900;display:flex;flex-direction:column;gap:8px;padding:8px 6px;background:var(--bg-card);border:1px solid var(--border)}
+.theme-switch .ts-label{writing-mode:vertical-rl;font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.ts-dot{width:16px;height:16px;cursor:pointer;border:1px solid var(--border);transition:all .2s}
+.ts-dot:hover{border-color:var(--accent)}
+.ts-dot.active{border-color:var(--accent);box-shadow:0 0 6px var(--accent-dim)}
+.ts-dot[data-theme="blackout"]{background:#D4A017}
+.ts-dot[data-theme="gunmetal"]{background:#C41E3A}
+.ts-dot[data-theme="ops-green"]{background:#BFA67A}
 
-/* ========== VOICE SWITCHER (bottom left) ========== */
-.voice-switcher{position:fixed;bottom:24px;left:24px;z-index:9000}
-.voice-toggle{width:44px;height:44px;border-radius:50%;background:rgba(var(--particle-color),0.08);backdrop-filter:blur(16px);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;color:var(--accent)}
-.voice-toggle:hover{background:rgba(var(--particle-color),0.15);border-color:var(--accent)}
-.voice-toggle svg{width:20px;height:20px}
-.voice-panel{position:absolute;bottom:52px;left:0;background:var(--card-bg);backdrop-filter:blur(20px);border:1px solid var(--card-border);border-radius:12px;padding:8px 0;min-width:200px;display:none;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
-.voice-panel.open{display:block}
-.voice-panel-title{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent);padding:8px 16px;font-weight:600}
-.voice-option{display:block;width:100%;text-align:left;padding:10px 16px;font-size:.85rem;color:var(--text-muted);transition:all .2s;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif}
-.voice-option:hover{color:var(--accent);background:rgba(var(--particle-color),0.08)}
-.voice-option.active{color:var(--accent);font-weight:600}
+/* ========== BREACH BUTTON ========== */
+.breach-btn{position:fixed;bottom:20px;right:20px;z-index:900;display:flex;align-items:center;gap:8px;background:var(--bg-card);border:1px solid var(--border);padding:8px 16px;font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);cursor:pointer;transition:all .2s}
+.breach-btn:hover{border-color:var(--accent);color:var(--accent)}
+.breach-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.breach-btn svg{width:16px;height:16px}
+.breach-switch{width:28px;height:14px;border:1px solid var(--border);position:relative;transition:all .2s}
+.breach-switch::after{content:'';position:absolute;top:2px;left:2px;width:8px;height:8px;background:var(--text-muted);transition:all .2s}
+.breach-btn.active .breach-switch{border-color:var(--accent)}
+.breach-btn.active .breach-switch::after{left:16px;background:var(--accent)}
 
-/* ========== ANIMATION SWITCHER (left rail) ========== */
-.anim-switcher{position:fixed;left:18px;top:50%;transform:translateY(-50%);z-index:9000;display:flex;flex-direction:column;align-items:center;gap:4px;background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:10px 5px}
-.anim-switcher .label{writing-mode:vertical-rl;text-orientation:mixed;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(var(--particle-color),0.7);font-weight:700;margin-bottom:4px}
-.anim-dot{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid rgba(var(--particle-color),0.4);background:rgba(0,0,0,0.3);transition:all .3s;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;padding:0;color:rgba(var(--particle-color),0.6)}
-.anim-dot:hover{border-color:var(--accent);background:rgba(var(--particle-color),0.2);color:var(--accent);transform:scale(1.15)}
-.anim-dot.active{border-color:var(--accent);background:rgba(var(--particle-color),0.25);color:var(--accent);box-shadow:0 0 10px rgba(var(--particle-color),0.4)}
+/* ========== SUBTLE PARTICLES ========== */
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5}
 
-/* ========== BREACH POWER BUTTON ========== */
-.compass-btn{position:fixed;bottom:24px;right:24px;z-index:9000;width:52px;height:52px;border-radius:50%;background:var(--card-bg);backdrop-filter:blur(16px);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;color:var(--text-muted)}
-.compass-btn:hover{border-color:var(--accent);color:var(--accent)}
-.compass-btn.active{border-color:var(--accent);color:var(--accent);box-shadow:0 0 20px rgba(var(--particle-color),0.4);animation:compass-pulse 2s ease infinite}
-@keyframes compass-pulse{0%,100%{box-shadow:0 0 20px rgba(var(--particle-color),0.4)}50%{box-shadow:0 0 35px rgba(var(--particle-color),0.6)}}
-.compass-btn svg{transition:transform .5s ease}
-.compass-btn.active svg{transform:rotate(360deg)}
-.compass-btn .btn-label{position:absolute;right:60px;white-space:nowrap;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);opacity:0;transition:opacity .3s}
-.compass-btn:hover .btn-label{opacity:1}
-
-/* ========== REVEAL ANIMATIONS ========== */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+/* ========== REVEAL ========== */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:.1s}
-.reveal-delay-2{transition-delay:.2s}
-.reveal-delay-3{transition-delay:.3s}
-.reveal-delay-4{transition-delay:.4s}
-
-/* ========== CANVAS ========== */
-#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:5;pointer-events:none}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}
 
 /* ========== RESPONSIVE ========== */
 @media(max-width:1024px){
-  .nav-links{display:none}
-  .hamburger{display:flex}
+  .nav-links{display:none}.hamburger{display:flex}
   .footer-grid{grid-template-columns:1fr 1fr}
-  .about-grid{grid-template-columns:1fr;gap:40px}
-  .value-grid{grid-template-columns:1fr 1fr;gap:24px}
-}
-@media(max-width:900px){
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .features-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
   section{padding:60px 20px}
-  .cards-grid{grid-template-columns:1fr}
-  .products-grid{grid-template-columns:1fr 1fr}
-  .stats-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .features-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-item:nth-child(2){border-right:none}
+  .stat-item:nth-child(3),.stat-item:nth-child(4){border-top:1px solid var(--border)}
   .footer-grid{grid-template-columns:1fr}
-  .value-grid{grid-template-columns:1fr}
-  .anim-switcher{left:8px;padding:8px 5px}
-  .anim-dot{width:24px;height:24px;font-size:11px}
-  .theme-switcher{right:8px;padding:10px 6px}
-  .testimonial-card{padding:32px 24px}
+  .cta-btns{flex-direction:column;align-items:center}
+  .testimonial-block{padding:28px 24px}
 }
 @media(max-width:480px){
-  .hero h1{font-size:2rem}
-  .nav{padding:12px 16px}
-  .nav-logo{font-size:1.1rem}
-  .products-grid{grid-template-columns:1fr}
-  .anim-switcher{left:50%;top:auto;bottom:60px;transform:translateX(-50%);flex-direction:row;padding:6px 10px;gap:4px;border-radius:16px}
-  .anim-switcher .label{writing-mode:horizontal-tb;text-orientation:mixed;margin-bottom:0;margin-right:4px;font-size:9px}
-  .anim-dot{width:24px;height:24px;font-size:11px}
+  .hero h1{font-size:2.2rem}
+  .nav{padding:0 16px}
+  .products-grid{grid-template-columns:1fr 1fr}
+  .catalog-grid{grid-template-columns:1fr}
+  .theme-switch{right:8px;padding:6px 4px}
 }
-
-/* ========== PRINT ========== */
 @media print{
-  .nav,.theme-switcher,.voice-switcher,.anim-switcher,.compass-btn,#cursor-glow,#bg-canvas,#loading-screen,#scroll-progress,.hamburger,.mobile-nav{display:none !important}
+  .nav,.theme-switch,.breach-btn,.grain,#bg-canvas,#scroll-progress,.hamburger,.mobile-nav{display:none !important}
   body{background:#fff;color:#000}
   section{padding:24px 0;break-inside:avoid}
-  .card,.product-card,.testimonial-card,.guarantee-box{border:1px solid #ccc;box-shadow:none;background:#fff}
   .hero{min-height:auto;padding:40px 0}
-  .hero h1{-webkit-text-fill-color:#000;background:none}
-  .btn-primary{border:1px solid #000;color:#000;background:#fff}
+  .hero h1{color:#000}
 }
-
-/* ========== VOICE CROSSFADE ========== */
-[data-voice]{transition:opacity .3s ease}
 </style>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to Content</a>
-
-<!-- ===== LOADING SCREEN ===== -->
-<div id="loading-screen" role="status" aria-label="Loading">
-  <div class="logo-text">DOUBLE-TAP</div>
-  <div class="logo-sub">Breaching Tools</div>
-  <div class="crosshair-spinner">
-    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="50" cy="50" r="40"/>
-      <circle cx="50" cy="50" r="20"/>
-      <line x1="50" y1="5" x2="50" y2="25"/>
-      <line x1="50" y1="75" x2="50" y2="95"/>
-      <line x1="5" y1="50" x2="25" y2="50"/>
-      <line x1="75" y1="50" x2="95" y2="50"/>
-    </svg>
-  </div>
-</div>
-
-<!-- ===== SCROLL PROGRESS ===== -->
-<div id="scroll-progress" role="progressbar" aria-label="Scroll progress"></div>
-
-<!-- ===== CURSOR GLOW ===== -->
-<div id="cursor-glow"></div>
-
-<!-- ===== CANVAS & ANIMATION SWITCHER ===== -->
+<div class="grain"></div>
 <canvas id="bg-canvas"></canvas>
-<div class="anim-switcher" role="radiogroup" aria-label="Background animation">
-  <span class="label">BG</span>
-  <button class="anim-dot active" data-anim="particles" role="radio" aria-checked="true" aria-label="Particles" title="Particles">&#x2734;</button>
-  <button class="anim-dot" data-anim="matrix" role="radio" aria-checked="false" aria-label="Matrix Rain" title="Matrix">&#x25A7;</button>
-  <button class="anim-dot" data-anim="starfield" role="radio" aria-checked="false" aria-label="Starfield" title="Starfield">&#x2726;</button>
-  <button class="anim-dot" data-anim="aurora" role="radio" aria-checked="false" aria-label="Aurora" title="Aurora">&#x223F;</button>
-  <button class="anim-dot" data-anim="fireflies" role="radio" aria-checked="false" aria-label="Fireflies" title="Fireflies">&#x2740;</button>
-  <button class="anim-dot" data-anim="mesh" role="radio" aria-checked="false" aria-label="Geometric Mesh" title="Mesh">&#x25E3;</button>
-  <button class="anim-dot" data-anim="lightning" role="radio" aria-checked="false" aria-label="Lightning" title="Lightning">&#x26A1;</button>
-  <button class="anim-dot" data-anim="bubbles" role="radio" aria-checked="false" aria-label="Bubbles" title="Bubbles">&#x25CB;</button>
-  <button class="anim-dot" data-anim="dna" role="radio" aria-checked="false" aria-label="DNA Helix" title="DNA">&#x29BE;</button>
-  <button class="anim-dot" data-anim="blobs" role="radio" aria-checked="false" aria-label="Liquid Blobs" title="Blobs">&#x25CF;</button>
-</div>
+<div id="scroll-progress"></div>
 
-<!-- ===== NAV ===== -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <a href="#" class="nav-logo" aria-label="Double-Tap Breaching Tools home">
-    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3">
-      <circle cx="50" cy="50" r="40"/>
-      <circle cx="50" cy="50" r="18"/>
-      <line x1="50" y1="5" x2="50" y2="25"/>
-      <line x1="50" y1="75" x2="50" y2="95"/>
-      <line x1="5" y1="50" x2="25" y2="50"/>
-      <line x1="75" y1="50" x2="95" y2="50"/>
-    </svg>
-    <span>BCM</span> DOUBLE-TAP
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4"><circle cx="50" cy="50" r="35"/><circle cx="50" cy="50" r="14"/><line x1="50" y1="8" x2="50" y2="28"/><line x1="50" y1="72" x2="50" y2="92"/><line x1="8" y1="50" x2="28" y2="50"/><line x1="72" y1="50" x2="92" y2="50"/></svg>
+    <span class="accent">BCM</span> DOUBLE-TAP
   </a>
   <div class="nav-links">
     <a href="#features">Tool Info</a>
     <a href="#about">About</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#products">Products</a>
-    <a href="#distributors">Distributors</a>
     <a href="#contact">Contact</a>
-    <a href="shop.html" class="nav-cta-btn">Shop Now</a>
+    <a href="shop.html" class="nav-cta">Shop Now</a>
   </div>
-  <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
-
-<!-- ===== MOBILE NAV ===== -->
-<div class="mobile-nav" role="navigation" aria-label="Mobile navigation">
+<div class="mobile-nav">
   <a href="#features">Tool Info</a>
   <a href="#about">About</a>
   <a href="#testimonials">Testimonials</a>
   <a href="#products">Products</a>
-  <a href="#distributors">Distributors</a>
   <a href="#contact">Contact</a>
-  <a href="shop.html">Shop Now</a>
+  <a href="shop.html">Shop</a>
 </div>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero" id="main-content">
-  <div class="hero-bg-pattern"></div>
   <div class="hero-content">
-    <p class="hero-label reveal" data-voice="hero-label">Spreading the Promise of Freedom One Door at a Time</p>
-    <h1 class="reveal reveal-delay-1" data-voice="hero-h1">Double-Tap Breaching Tools</h1>
-    <p class="sub-tagline reveal reveal-delay-2" data-voice="hero-sub">Built by Breachers for Breachers</p>
-    <div class="typed-line reveal reveal-delay-3"><span id="typed-text"></span><span class="cursor-blink"></span></div>
-    <a href="shop.html" class="btn-primary magnetic-btn reveal reveal-delay-4" data-voice="hero-cta">Shop All Products</a>
+    <p class="hero-eyebrow reveal">Spreading the Promise of Freedom One Door at a Time</p>
+    <h1 class="reveal reveal-d1">Double-Tap<br>Breaching Tools</h1>
+    <p class="sub reveal reveal-d2">Built by Breachers for Breachers</p>
+    <a href="shop.html" class="hero-cta reveal reveal-d3">Shop All Products</a>
   </div>
 </section>
 
-<!-- ===== STATS BAR ===== -->
-<section class="stats-bar" aria-label="Key statistics">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item reveal">
-        <div class="stat-number" data-count="18">0+</div>
-        <div class="stat-label" data-voice="stat1-label">Tactical Tools</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-1">
-        <div class="stat-number" data-voice="stat2-number">Since 2007</div>
-        <div class="stat-label" data-voice="stat2-label">In the Field</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-2">
-        <div class="stat-number" data-voice="stat3-number">0</div>
-        <div class="stat-label" data-voice="stat3-label">Failures</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-3">
-        <div class="stat-number" data-voice="stat4-number">Lifetime</div>
-        <div class="stat-label" data-voice="stat4-label">Guarantee</div>
-      </div>
-    </div>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item reveal"><div class="stat-number" data-count="18">0+</div><div class="stat-label">Tactical Tools</div></div>
+    <div class="stat-item reveal reveal-d1"><div class="stat-number">2007</div><div class="stat-label">In the Field Since</div></div>
+    <div class="stat-item reveal reveal-d2"><div class="stat-number">0</div><div class="stat-label">Equipment Failures</div></div>
+    <div class="stat-item reveal reveal-d3"><div class="stat-number">LIFE</div><div class="stat-label">Guarantee</div></div>
   </div>
-</section>
+</div>
 
-<!-- ===== FEATURED PRODUCTS ===== -->
+<!-- FEATURED PRODUCTS -->
 <section id="products" class="section-alt">
   <div class="container text-center">
-    <p class="section-label reveal" data-voice="products-label">Featured Products</p>
-    <h2 class="section-title reveal reveal-delay-1" data-voice="products-title">Tools That Never Fail</h2>
-    <p class="section-subtitle reveal reveal-delay-2" data-voice="products-subtitle">Every tool machined from solid billets. Anti-blowback floating mass technology. Trusted by operators worldwide.</p>
+    <p class="section-eyebrow reveal">Equipment</p>
+    <h2 class="section-title reveal reveal-d1">Tools That Never Fail</h2>
+    <p class="section-desc reveal reveal-d2">Machined from solid billets. Anti-blowback floating mass technology. Trusted by operators worldwide.</p>
   </div>
   <div class="container">
     <div class="products-grid">
-
-      <div class="product-card reveal">
-        <div class="product-icon">
-          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="28" y1="4" x2="28" y2="52"/><line x1="20" y1="4" x2="36" y2="4"/><path d="M20 52 L36 52 Q40 52 40 48 L40 44 Q40 40 36 40 L20 40 Q16 40 16 44 L16 48 Q16 52 20 52Z"/><circle cx="28" cy="20" r="6"/></svg>
-        </div>
-        <div class="product-category">Halligan</div>
-        <h3>Straight Halligan</h3>
-        <div class="product-price">$680</div>
-        <a href="shop.html" class="product-link">View Details</a>
-      </div>
-
-      <div class="product-card reveal reveal-delay-1">
-        <div class="product-icon">
-          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="28" y1="4" x2="28" y2="52"/><line x1="20" y1="4" x2="36" y2="4"/><path d="M16 48 Q16 52 20 52 L36 52 Q40 52 40 48 L40 38 Q38 34 28 34 Q18 34 16 38Z"/></svg>
-        </div>
-        <div class="product-category">Halligan</div>
-        <h3>Curved Halligan</h3>
-        <div class="product-price">$680</div>
-        <a href="shop.html" class="product-link">View Details</a>
-      </div>
-
-      <div class="product-card reveal reveal-delay-2">
-        <div class="product-icon">
-          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="16" y="4" width="24" height="20" rx="4"/><line x1="28" y1="24" x2="28" y2="52"/><line x1="22" y1="52" x2="34" y2="52"/></svg>
-        </div>
-        <div class="product-category">Hammer</div>
-        <h3>Heavy Double-Tap Hammer</h3>
-        <div class="product-price">$615</div>
-        <a href="shop.html" class="product-link">View Details</a>
-      </div>
-
-      <div class="product-card reveal reveal-delay-3">
-        <div class="product-icon">
-          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="18" y="4" width="20" height="16" rx="3"/><line x1="28" y1="20" x2="28" y2="52"/><line x1="22" y1="52" x2="34" y2="52"/></svg>
-        </div>
-        <div class="product-category">Hammer</div>
-        <h3>Light Double-Tap Hammer</h3>
-        <div class="product-price">$615</div>
-        <a href="shop.html" class="product-link">View Details</a>
-      </div>
-
-      <div class="product-card reveal">
-        <div class="product-icon">
-          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="12" y="14" width="32" height="12" rx="6"/><line x1="28" y1="26" x2="28" y2="48"/><line x1="18" y1="48" x2="38" y2="48"/><line x1="12" y1="8" x2="44" y2="8"/></svg>
-        </div>
-        <div class="product-category">Ram</div>
-        <h3>Light Weight Ram</h3>
-        <div class="product-price">$450</div>
-        <a href="shop.html" class="product-link">View Details</a>
-      </div>
-
-      <div class="product-card reveal reveal-delay-1">
-        <div class="product-icon">
-          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="10" y="10" width="36" height="18" rx="4"/><line x1="28" y1="28" x2="28" y2="50"/><line x1="16" y1="50" x2="40" y2="50"/><circle cx="20" cy="19" r="3"/><circle cx="36" cy="19" r="3"/></svg>
-        </div>
-        <div class="product-category">Specialty</div>
-        <h3>Breaka</h3>
-        <div class="product-price">$1,280</div>
-        <a href="shop.html" class="product-link">View Details</a>
-      </div>
-
-      <div class="product-card reveal reveal-delay-2">
-        <div class="product-icon">
-          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="14" y="6" width="28" height="14" rx="4"/><rect x="18" y="20" width="20" height="10" rx="3"/><line x1="28" y1="30" x2="28" y2="52"/><circle cx="28" cy="13" r="4"/></svg>
-        </div>
-        <div class="product-category">Tool Set</div>
-        <h3>Double-Tap Quick Change Set</h3>
-        <div class="product-price">$1,715</div>
-        <a href="shop.html" class="product-link">View Details</a>
-      </div>
-
-      <div class="product-card reveal reveal-delay-3">
-        <div class="product-icon">
-          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="28" y1="4" x2="28" y2="52"/><line x1="12" y1="4" x2="44" y2="4"/><line x1="12" y1="52" x2="44" y2="52"/><circle cx="28" cy="20" r="8"/><circle cx="28" cy="38" r="5"/></svg>
-        </div>
-        <div class="product-category">Specialty</div>
-        <h3>FRIES POLE</h3>
-        <div class="product-price">$780</div>
-        <a href="shop.html" class="product-link">View Details</a>
-      </div>
-
+      <a href="shop.html" class="product-card reveal"><div class="p-cat">Halligan</div><h3>Straight Halligan</h3><div class="p-price">$680</div><span class="p-link">View Details</span></a>
+      <a href="shop.html" class="product-card reveal"><div class="p-cat">Halligan</div><h3>Curved Halligan</h3><div class="p-price">$680</div><span class="p-link">View Details</span></a>
+      <a href="shop.html" class="product-card reveal"><div class="p-cat">Hammer</div><h3>Heavy Double-Tap Hammer</h3><div class="p-price">$615</div><span class="p-link">View Details</span></a>
+      <a href="shop.html" class="product-card reveal"><div class="p-cat">Hammer</div><h3>Light Double-Tap Hammer</h3><div class="p-price">$615</div><span class="p-link">View Details</span></a>
+      <a href="shop.html" class="product-card reveal"><div class="p-cat">Ram</div><h3>Light Weight Ram</h3><div class="p-price">$450</div><span class="p-link">View Details</span></a>
+      <a href="shop.html" class="product-card reveal"><div class="p-cat">Specialty</div><h3>Breaka</h3><div class="p-price">$1,280</div><span class="p-link">View Details</span></a>
+      <a href="shop.html" class="product-card reveal"><div class="p-cat">Tool Set</div><h3>Quick Change Set</h3><div class="p-price">$1,715</div><span class="p-link">View Details</span></a>
+      <a href="shop.html" class="product-card reveal"><div class="p-cat">Specialty</div><h3>FRIES POLE</h3><div class="p-price">$780</div><span class="p-link">View Details</span></a>
     </div>
   </div>
-
   <!-- Full Catalog -->
-  <div class="container catalog-section">
-    <h3 class="text-center reveal" data-voice="catalog-title">Full Product Catalog</h3>
+  <div class="container" style="margin-top:48px">
+    <h3 class="text-center reveal" style="margin-bottom:4px">Full Catalog</h3>
     <div class="catalog-grid">
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Straight Halligan</span><span class="cat-price">$680</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Curved Halligan</span><span class="cat-price">$680</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Standard Halligan</span><span class="cat-price">$525</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Military Halligan</span><span class="cat-price">$615</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Halligan</span><span class="cat-price">$615</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Standard Breaching Hammer</span><span class="cat-price">$525</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Heavy Double-Tap Hammer</span><span class="cat-price">$615</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Intermediate Double-Tap Hammer</span><span class="cat-price">$615</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Light Double-Tap Hammer (LDTH-P)</span><span class="cat-price">$615</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Light Weight Ram</span><span class="cat-price">$450</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Breaka</span><span class="cat-price">$1,280</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">FRIES POLE</span><span class="cat-price">$780</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Double-Tap Quick Change Set</span><span class="cat-price">$1,715</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Standard Tool Set</span><span class="cat-price">$1,050</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Single Tool Carrier</span><span class="cat-price">$65</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Double Tool Carrier</span><span class="cat-price">$162</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Explosive Breaching Door Apparatus</span><span class="cat-price">$2,500</span></a>
-      <a href="shop.html" class="catalog-item reveal"><span class="cat-name">Exothermic Breaching Door</span><span class="cat-price">$3,000</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Straight Halligan</span><span class="c-price">$680</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Curved Halligan</span><span class="c-price">$680</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Standard Halligan</span><span class="c-price">$525</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Military Halligan</span><span class="c-price">$615</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Halligan</span><span class="c-price">$615</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Std Breaching Hammer</span><span class="c-price">$525</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Heavy DT Hammer</span><span class="c-price">$615</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Intermediate DT Hammer</span><span class="c-price">$615</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Light DT Hammer (LDTH-P)</span><span class="c-price">$615</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Light Weight Ram</span><span class="c-price">$450</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Breaka</span><span class="c-price">$1,280</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">FRIES POLE</span><span class="c-price">$780</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Quick Change Set</span><span class="c-price">$1,715</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Standard Tool Set</span><span class="c-price">$1,050</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Single Tool Carrier</span><span class="c-price">$65</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Double Tool Carrier</span><span class="c-price">$162</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Explosive Breach Door</span><span class="c-price">$2,500</span></a>
+      <a href="shop.html" class="catalog-item reveal"><span class="c-name">Exothermic Breach Door</span><span class="c-price">$3,000</span></a>
     </div>
   </div>
 </section>
 
-<hr class="section-divider">
+<hr class="divider">
 
-<!-- ===== TECHNOLOGY / FEATURES ===== -->
+<!-- FEATURES -->
 <section id="features">
   <div class="container text-center">
-    <p class="section-label reveal" data-voice="features-label">Technology</p>
-    <h2 class="section-title reveal reveal-delay-1" data-voice="features-title">Engineered to Dominate</h2>
-    <p class="section-subtitle reveal reveal-delay-2" data-voice="features-subtitle">Every Double-Tap tool is the product of combat-tested engineering and aerospace-grade materials.</p>
+    <p class="section-eyebrow reveal">Technology</p>
+    <h2 class="section-title reveal reveal-d1">Engineered to Dominate</h2>
+    <p class="section-desc reveal reveal-d2">Combat-tested engineering. Aerospace-grade materials. Every spec earned its place.</p>
   </div>
   <div class="container">
-    <div class="cards-grid">
-
-      <div class="card reveal">
-        <div class="card-icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="24" r="20"/><circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="3"/><line x1="24" y1="1" x2="24" y2="9"/><line x1="24" y1="39" x2="24" y2="47"/><line x1="1" y1="24" x2="9" y2="24"/><line x1="39" y1="24" x2="47" y2="24"/></svg>
-        </div>
-        <h3 data-voice="feature1-title">Anti-Blowback Floating Mass</h3>
-        <p data-voice="feature1-desc">Internal floating mass technology absorbs impact energy and eliminates blowback and vibration. Unique to Double-Tap. Zero energy wasted on the operator.</p>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <svg class="f-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="20" r="17"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="2" fill="currentColor"/><line x1="20" y1="1" x2="20" y2="8"/><line x1="20" y1="32" x2="20" y2="39"/><line x1="1" y1="20" x2="8" y2="20"/><line x1="32" y1="20" x2="39" y2="20"/></svg>
+        <h3>Anti-Blowback Floating Mass</h3>
+        <p>Internal floating mass absorbs impact energy. Eliminates blowback and vibration. Unique to Double-Tap. Zero energy wasted on the operator.</p>
       </div>
-
-      <div class="card reveal reveal-delay-1">
-        <div class="card-icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M24 4 L42 16 L42 32 L24 44 L6 32 L6 16Z"/><path d="M24 12 L34 20 L34 28 L24 36 L14 28 L14 20Z"/><circle cx="24" cy="24" r="4"/></svg>
-        </div>
-        <h3 data-voice="feature2-title">Aerospace-Grade Materials</h3>
-        <p data-voice="feature2-desc">Ti-6Al-4V titanium, 6061T6 aluminum, 303 stainless steel, and 4140 chromoly steel. Machined from solid billets&mdash;never cast. Stronger at the molecular level.</p>
+      <div class="feature-card reveal">
+        <svg class="f-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 3L35 13V27L20 37L5 27V13Z"/><path d="M20 10L28 16V24L20 30L12 24V16Z"/></svg>
+        <h3>Aerospace-Grade Materials</h3>
+        <p>Ti-6Al-4V titanium. 6061T6 aluminum. 303 stainless. 4140 chromoly. Machined from solid billets&mdash;never cast.</p>
       </div>
-
-      <div class="card reveal reveal-delay-2">
-        <div class="card-icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M24 4 L28 18 L42 18 L30 26 L34 42 L24 32 L14 42 L18 26 L6 18 L20 18Z"/></svg>
-        </div>
-        <h3 data-voice="feature3-title">Hardcoat Anodized Finish</h3>
-        <p data-voice="feature3-desc">Deep hard anodized aluminum handles at .002" thickness. Second hardest natural substance after diamond. Corrosion-proof. Battle-ready in any environment.</p>
+      <div class="feature-card reveal">
+        <svg class="f-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="32" height="32"/><line x1="4" y1="13" x2="36" y2="13"/><line x1="4" y1="22" x2="36" y2="22"/><line x1="4" y1="31" x2="36" y2="31"/><line x1="13" y1="4" x2="13" y2="36"/><line x1="22" y1="4" x2="22" y2="36"/><line x1="31" y1="4" x2="31" y2="36"/></svg>
+        <h3>Billet Machined Precision</h3>
+        <p>CNC-machined from solid metal. No casting, no weak points, no air pockets. Uniform grain structure for maximum impact resistance.</p>
       </div>
-
-      <div class="card reveal">
-        <div class="card-icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="8" y="8" width="32" height="32" rx="4"/><line x1="8" y1="16" x2="40" y2="16"/><line x1="8" y1="24" x2="40" y2="24"/><line x1="8" y1="32" x2="40" y2="32"/><line x1="16" y1="8" x2="16" y2="40"/><line x1="24" y1="8" x2="24" y2="40"/><line x1="32" y1="8" x2="32" y2="40"/></svg>
-        </div>
-        <h3 data-voice="feature4-title">Billet Machined Precision</h3>
-        <p data-voice="feature4-desc">Every component is CNC-machined from solid metal billets. No casting, no weak points, no air pockets. Uniform grain structure throughout for maximum impact resistance.</p>
+      <div class="feature-card reveal">
+        <svg class="f-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 3L23 15L36 15L25 22L29 35L20 27L11 35L15 22L4 15L17 15Z"/></svg>
+        <h3>Hardcoat Anodized</h3>
+        <p>.002&quot; deep hard anodized aluminum. Second hardest natural substance after diamond. Corrosion-proof. Any environment.</p>
       </div>
-
-      <div class="card reveal reveal-delay-1">
-        <div class="card-icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 44 L14 20 L8 20 L24 4 L40 20 L34 20 L34 44Z"/><rect x="20" y="30" width="8" height="14"/></svg>
-        </div>
-        <h3 data-voice="feature5-title">Lightest on the Market</h3>
-        <p data-voice="feature5-desc">Collapsible design with positive locking shaft. Easy grasp handles with lanyard connections. Maximum breach force at minimum operator weight. Every ounce earns its place.</p>
+      <div class="feature-card reveal">
+        <svg class="f-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 36V16L6 16L20 3L34 16L28 16V36Z"/></svg>
+        <h3>Lightest on the Market</h3>
+        <p>Collapsible design. Positive locking shaft. Maximum breach force at minimum operator weight. Every ounce earns its place.</p>
       </div>
-
-      <div class="card reveal reveal-delay-2">
-        <div class="card-icon">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="18" r="14"/><path d="M14 30 L10 44 L24 38 L38 44 L34 30"/><path d="M24 10 L26 16 L32 16 L27 20 L29 26 L24 22 L19 26 L21 20 L16 16 L22 16Z"/></svg>
-        </div>
-        <h3 data-voice="feature6-title">Made in the USA</h3>
-        <p data-voice="feature6-desc">Every tool manufactured in Fayetteville, North Carolina. American materials. American labor. 98% aluminum recycling rate. Supporting the Americans who serve.</p>
+      <div class="feature-card reveal">
+        <svg class="f-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="14" r="11"/><path d="M12 24L8 36L20 31L32 36L28 24"/></svg>
+        <h3>Made in the USA</h3>
+        <p>Manufactured in Fayetteville, NC. American materials. American labor. 98% aluminum recycling rate.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<hr class="section-divider">
+<hr class="divider">
 
-<!-- ===== ABOUT ===== -->
+<!-- ABOUT -->
 <section id="about" class="section-alt">
   <div class="container">
     <div class="about-grid">
-      <div>
-        <p class="section-label reveal" data-voice="about-label">Our Story</p>
-        <h2 class="section-title reveal reveal-delay-1" data-voice="about-title">Born in Combat. Built in Fayetteville.</h2>
-        <p class="reveal reveal-delay-2" style="color:var(--text-muted);line-height:1.8;margin-bottom:16px" data-voice="about-p1">BCM Inc. started as a welding company in 2004 in Fayetteville, North Carolina&mdash;home of Fort Liberty and the 82nd Airborne. By mid-2006, a master breacher with real-world operational experience shifted the company&rsquo;s focus to what he knew best: breaching tools that actually work when lives depend on them.</p>
-        <p class="reveal reveal-delay-3" style="color:var(--text-muted);line-height:1.8;margin-bottom:16px" data-voice="about-p2">Since January 2007, Double-Tap tools have been in the hands of operators across law enforcement, military, fire departments, and SWAT teams worldwide. The philosophy is simple: build the tool you&rsquo;d trust your own life to, then make it available to every operator who needs it.</p>
-        <p class="reveal reveal-delay-4" style="color:var(--text-muted);line-height:1.8" data-voice="about-p3">Every tool features the patented anti-blowback floating mass system&mdash;a technology that exists because a breacher understood what engineers couldn&rsquo;t: the difference between hitting a door in a lab and hitting one at 3 AM with your team stacked behind you.</p>
-        <div class="about-badge reveal">
-          <strong>Founded 2004</strong> &bull; Fayetteville, NC &bull; <strong>Built by Breachers for Breachers</strong>
-        </div>
+      <div class="about-text">
+        <p class="section-eyebrow reveal">Our Story</p>
+        <h2 class="section-title reveal reveal-d1">Born in Combat.<br>Built in Fayetteville.</h2>
+        <p class="reveal reveal-d2">BCM Inc. started as a welding company in 2004 in Fayetteville, North Carolina&mdash;home of Fort Liberty and the 82nd Airborne. By mid-2006, a master breacher with real-world operational experience shifted the company&rsquo;s focus to what he knew best: breaching tools that actually work when lives depend on them.</p>
+        <p class="reveal reveal-d3">Since January 2007, Double-Tap tools have been in the hands of operators across law enforcement, military, fire departments, and SWAT teams worldwide. The philosophy is simple: build the tool you&rsquo;d trust your own life to.</p>
+        <p class="reveal">Every tool features the patented anti-blowback floating mass system&mdash;technology that exists because a breacher understood what engineers couldn&rsquo;t: the difference between hitting a door in a lab and hitting one at 3 AM with your team stacked behind you.</p>
+        <div class="about-badge reveal">Founded 2004 &bull; Fayetteville, NC &bull; Built by Breachers for Breachers</div>
       </div>
-      <div class="reveal" style="display:flex;flex-direction:column;gap:24px">
-        <div class="card" style="text-align:center">
-          <div class="card-icon" style="margin:0 auto 16px">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 4 L30 16 L44 18 L34 28 L36 42 L24 36 L12 42 L14 28 L4 18 L18 16Z"/></svg>
-          </div>
-          <h3 style="color:var(--accent);font-size:1.1rem">Special Operations Trusted</h3>
-          <p style="color:var(--text-muted);font-size:.9rem;margin-top:8px">Deployed by elite units who accept zero equipment failure.</p>
+      <div class="about-sidebar reveal">
+        <div class="about-stat">
+          <h4>Special Operations Trusted</h4>
+          <p>Deployed by elite units who accept zero equipment failure.</p>
         </div>
-        <div class="card" style="text-align:center">
-          <div class="card-icon" style="margin:0 auto 16px">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 4 C24 4 4 18 4 28 C4 40 14 44 24 44 C34 44 44 40 44 28 C44 18 24 4 24 4Z"/><path d="M24 16 L26 22 L32 22 L27 26 L29 32 L24 28 L19 32 L21 26 L16 22 L22 22Z"/></svg>
-          </div>
-          <h3 style="color:var(--accent);font-size:1.1rem">Zero Tools Replaced</h3>
-          <p style="color:var(--text-muted);font-size:.9rem;margin-top:8px">Lifetime guarantee. Never once had to replace or rebuild a tool.</p>
+        <div class="about-stat">
+          <h4>Zero Tools Replaced</h4>
+          <p>Lifetime guarantee. Never once had to replace or rebuild a tool.</p>
+        </div>
+        <div class="about-stat">
+          <h4>Master Breacher Founded</h4>
+          <p>Designed by an operator with real-world breach experience.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="section-divider">
+<hr class="divider">
 
-<!-- ===== TESTIMONIALS ===== -->
+<!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="container text-center">
-    <p class="section-label reveal" data-voice="testimonial-label">Testimonials</p>
-    <h2 class="section-title reveal reveal-delay-1" data-voice="testimonial-title">Field-Tested. Operator-Approved.</h2>
+    <p class="section-eyebrow reveal">Testimonials</p>
+    <h2 class="section-title reveal reveal-d1">Field-Tested. Operator-Approved.</h2>
   </div>
-  <div class="container" style="margin-top:48px">
-    <div class="testimonial-card reveal reveal-delay-2">
-      <div class="quote-icon">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
-      </div>
-      <blockquote data-voice="testimonial-quote">The fit and finish of this product exceeded all of my and our expectations. We have tested the device extensively and found it to far surpass its suggested load limits and quality in all areas evaluated. I openly and wholeheartedly recommend your complete product line sincerely, honestly and enthusiastically without hesitation.</blockquote>
-      <div class="testimonial-author" data-voice="testimonial-author">Monte Le Gould</div>
-      <div class="testimonial-role" data-voice="testimonial-role">State Peace Officer &bull; SWAT/HRT Trainer and Team Leader &bull; California &bull; 20+ Years Experience</div>
+  <div class="container" style="margin-top:40px">
+    <div class="testimonial-block reveal reveal-d2">
+      <blockquote>The fit and finish of this product exceeded all of my and our expectations. We have tested the device extensively and found it to far surpass its suggested load limits and quality in all areas evaluated. I openly and wholeheartedly recommend your complete product line sincerely, honestly and enthusiastically without hesitation.</blockquote>
+      <div class="t-author">Monte Le Gould</div>
+      <div class="t-role">State Peace Officer &bull; SWAT/HRT Trainer and Team Leader &bull; California &bull; 20+ Years Experience</div>
     </div>
   </div>
 </section>
 
-<hr class="section-divider">
+<hr class="divider">
 
-<!-- ===== GUARANTEE ===== -->
-<section id="guarantee" class="section-alt">
+<!-- GUARANTEE -->
+<section class="section-alt">
   <div class="container">
-    <div class="guarantee-box reveal">
-      <div class="guarantee-icon">
-        <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-          <path d="M40 4 L52 16 L72 16 L72 36 L76 40 L72 44 L72 64 L52 64 L40 76 L28 64 L8 64 L8 44 L4 40 L8 36 L8 16 L28 16Z"/>
-          <path d="M28 40 L36 48 L52 32"/>
-        </svg>
-      </div>
-      <p class="section-label" data-voice="guarantee-label">Our Promise</p>
-      <h3 data-voice="guarantee-title">Lifetime Guarantee</h3>
-      <p data-voice="guarantee-desc">We will replace any broken tool free of charge for life due to manufacturing or material defect. Free shipping on all replacements. Free labor on rebuilds&mdash;you only pay for parts. In our entire history, we have never had to rebuild or replace a single tool.</p>
-      <div class="guarantee-stat" data-voice="guarantee-stat">0 Tools Ever Replaced</div>
+    <div class="guarantee-block reveal">
+      <svg class="g-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 4L42 14H56V28L60 32L56 36V50H42L32 60L22 50H8V36L4 32L8 28V14H22Z"/><polyline points="22,32 28,38 42,26"/></svg>
+      <p class="section-eyebrow">Our Promise</p>
+      <h3 class="section-title">Lifetime Guarantee</h3>
+      <p>Replace any broken tool free of charge for life. Free shipping on replacements. Free labor on rebuilds&mdash;parts only. In our entire history, we have never had to rebuild or replace a single tool.</p>
+      <div class="g-stat">0 Tools Ever Replaced</div>
     </div>
   </div>
 </section>
 
-<hr class="section-divider">
+<hr class="divider">
 
-<!-- ===== DISTRIBUTORS ===== -->
-<section id="distributors">
-  <div class="container text-center">
-    <p class="section-label reveal">Distributors</p>
-    <h2 class="section-title reveal reveal-delay-1" data-voice="distributors-title">Authorized Distribution</h2>
-    <p class="section-subtitle reveal reveal-delay-2" data-voice="distributors-desc">Double-Tap Breaching Tools are available through authorized distributors and direct from BCM Inc. Contact us for volume pricing, department orders, and distribution inquiries.</p>
-    <a href="mailto:customerservice@bcm8.com" class="btn-primary magnetic-btn reveal reveal-delay-3">Contact for Distribution</a>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- ===== CTA ===== -->
+<!-- CTA -->
 <section id="contact" class="cta-section">
   <div class="container text-center">
-    <p class="section-label reveal" data-voice="cta-label">Ready to Equip?</p>
-    <h2 class="section-title reveal reveal-delay-1" data-voice="cta-title">Ready to Breach?</h2>
-    <p class="section-subtitle reveal reveal-delay-2" style="margin-left:auto;margin-right:auto" data-voice="cta-desc">Equip your team with the tools that have never failed. Zero replacements. Zero rebuilds. Lifetime guarantee.</p>
-    <div class="reveal reveal-delay-3" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a href="shop.html" class="btn-primary magnetic-btn" data-voice="cta-btn1">Shop All Products</a>
-      <a href="mailto:customerservice@bcm8.com" class="btn-primary magnetic-btn" style="background:transparent;border:2px solid var(--accent);color:var(--accent)" data-voice="cta-btn2">Contact Us</a>
+    <p class="section-eyebrow reveal">Ready to Equip?</p>
+    <h2 class="section-title reveal reveal-d1">Ready to Breach?</h2>
+    <p class="section-desc reveal reveal-d2" style="margin-left:auto;margin-right:auto">Zero replacements. Zero rebuilds. Lifetime guarantee.</p>
+    <div class="cta-btns reveal reveal-d3">
+      <a href="shop.html" class="cta-primary">Shop All Products</a>
+      <a href="mailto:customerservice@bcm8.com" class="cta-secondary">Contact Us</a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
     <div class="footer-about">
       <h4>Double-Tap Breaching Tools</h4>
-      <p data-voice="footer-tagline">Spreading the Promise of Freedom One Door at a Time. US-made tactical breaching tools trusted by operators worldwide.</p>
+      <p>Spreading the Promise of Freedom One Door at a Time. US-made tactical breaching tools trusted by operators worldwide.</p>
       <div class="footer-social">
-        <a href="https://www.instagram.com/breachingtools/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-        </a>
-        <a href="https://www.facebook.com/breachingtoolsnc" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@breaching.tools" target="_blank" rel="noopener" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/company/breaching-tools" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-        <a href="https://www.youtube.com/@brianclement3081" target="_blank" rel="noopener" aria-label="YouTube">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="currentColor" stroke="none"/></svg>
-        </a>
+        <a href="https://www.instagram.com/breachingtools/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
+        <a href="https://www.facebook.com/breachingtoolsnc" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.tiktok.com/@breaching.tools" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+        <a href="https://www.linkedin.com/company/breaching-tools" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.youtube.com/@brianclement3081" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="currentColor" stroke="none"/></svg></a>
       </div>
     </div>
-    <div>
-      <h4>Products</h4>
-      <a href="shop.html">Halligans</a>
-      <a href="shop.html">Hammers</a>
-      <a href="shop.html">Rams</a>
-      <a href="shop.html">Tool Sets</a>
-      <a href="shop.html">Carriers</a>
-      <a href="shop.html">Training Equipment</a>
-    </div>
-    <div>
-      <h4>Company</h4>
-      <a href="#about">About BCM</a>
-      <a href="#features">Technology</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#guarantee">Guarantee</a>
-      <a href="#distributors">Distributors</a>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <a href="mailto:customerservice@bcm8.com">customerservice@bcm8.com</a>
-      <a href="https://www.breachingtools.com" target="_blank" rel="noopener">breachingtools.com</a>
-    </div>
+    <div><h4>Products</h4><a href="shop.html">Halligans</a><a href="shop.html">Hammers</a><a href="shop.html">Rams</a><a href="shop.html">Tool Sets</a><a href="shop.html">Carriers</a><a href="shop.html">Training</a></div>
+    <div><h4>Company</h4><a href="#about">About BCM</a><a href="#features">Technology</a><a href="#testimonials">Testimonials</a><a href="#contact">Contact</a></div>
+    <div><h4>Contact</h4><a href="mailto:customerservice@bcm8.com">customerservice@bcm8.com</a><a href="https://www.breachingtools.com" target="_blank" rel="noopener">breachingtools.com</a></div>
   </div>
-  <div class="footer-bottom">
-    <p class="footer-credit">&copy; <span id="year"></span> BCM Inc. / Double-Tap Breaching Tools. All rights reserved. Redesigned by <a href="https://kirkautomations.com" target="_blank" rel="noopener" style="color:var(--accent)">Kirk Automations</a></p>
-  </div>
+  <div class="footer-bottom"><p class="footer-credit">&copy; <span id="year"></span> BCM Inc. / Double-Tap Breaching Tools. All rights reserved. Redesigned by <a href="https://kirkautomations.com" target="_blank" rel="noopener" style="color:var(--accent)">Kirk Automations</a></p></div>
 </footer>
 
-<!-- ===== THEME SWITCHER ===== -->
-<div class="theme-switcher" role="radiogroup" aria-label="Color theme">
-  <span class="label">Theme</span>
-  <button class="theme-dot active" data-theme="blackout" role="radio" aria-checked="true" aria-label="Blackout" title="Blackout" tabindex="0"></button>
-  <button class="theme-dot" data-theme="gunmetal" role="radio" aria-checked="false" aria-label="Gunmetal" title="Gunmetal" tabindex="0"></button>
-  <button class="theme-dot" data-theme="ops-green" role="radio" aria-checked="false" aria-label="Ops Green" title="Ops Green" tabindex="0"></button>
+<!-- THEME SWITCHER -->
+<div class="theme-switch" role="radiogroup" aria-label="Theme">
+  <span class="ts-label">Theme</span>
+  <button class="ts-dot active" data-theme="blackout" role="radio" aria-checked="true" aria-label="Blackout" title="Blackout"></button>
+  <button class="ts-dot" data-theme="gunmetal" role="radio" aria-checked="false" aria-label="Gunmetal" title="Gunmetal"></button>
+  <button class="ts-dot" data-theme="ops-green" role="radio" aria-checked="false" aria-label="Ops Green" title="Ops Green"></button>
 </div>
 
-<!-- ===== VOICE SWITCHER ===== -->
-<div class="voice-switcher">
-  <button class="voice-toggle" aria-label="Change copy voice" id="voiceToggle">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-  </button>
-  <div class="voice-panel" id="voicePanel">
-    <div class="voice-panel-title">Copy Voice</div>
-    <button class="voice-option active" data-voice-id="the-operator">The Operator</button>
-    <button class="voice-option" data-voice-id="the-commander">The Commander</button>
-    <button class="voice-option" data-voice-id="the-engineer">The Engineer</button>
-    <button class="voice-option" data-voice-id="the-veteran">The Veteran</button>
-    <button class="voice-option" data-voice-id="the-instructor">The Instructor</button>
-    <button class="voice-option" data-voice-id="the-quartermaster">The Quartermaster</button>
-    <button class="voice-option" data-voice-id="the-patriot">The Patriot</button>
-  </div>
-</div>
-
-<!-- ===== BREACH POWER BUTTON ===== -->
-<button class="compass-btn" aria-label="Toggle Breach Mode" title="BREACH">
-  <span class="btn-label">BREACH</span>
-  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg>
+<!-- BREACH BUTTON -->
+<button class="breach-btn" id="breachBtn" aria-label="Toggle Breach Mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg>
+  BREACH
+  <div class="breach-switch"></div>
 </button>
 
 <script>
-/* ==========================================================================
-   DOUBLE-TAP BREACHING TOOLS &mdash; Complete JavaScript
-   ========================================================================== */
 (function(){
 'use strict';
+var $=function(s){return document.querySelector(s)};
+var $$=function(s){return Array.from(document.querySelectorAll(s))};
+var LS='breaching';
+function lsg(k,d){try{return localStorage.getItem(LS+'-'+k)||d}catch(e){return d}}
+function lss(k,v){try{localStorage.setItem(LS+'-'+k,v)}catch(e){}}
 
-/* ---------- UTILITY ---------- */
-const $=s=>document.querySelector(s);
-const $$=s=>[...document.querySelectorAll(s)];
-const LS_PREFIX='breaching';
-const DEFAULT_THEME='blackout';
-const ls={get:(k,d)=>{try{return localStorage.getItem(LS_PREFIX+'-'+k)||d}catch(e){return d}},set:(k,v)=>{try{localStorage.setItem(LS_PREFIX+'-'+k,v)}catch(e){}}};
+/* Year */
+var ye=$('#year');if(ye)ye.textContent=new Date().getFullYear();
 
-/* ---------- YEAR ---------- */
-const yearEl=$('#year');if(yearEl)yearEl.textContent=new Date().getFullYear();
+/* Scroll progress */
+var pb=$('#scroll-progress');
+window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;if(pb&&h>0)pb.style.width=(window.scrollY/h*100)+'%'},{passive:true});
 
-/* ---------- LOADING SCREEN ---------- */
-setTimeout(()=>{const l=$('#loading-screen');if(l){l.classList.add('fade-out');setTimeout(()=>l.style.display='none',600)}},1500);
-
-/* ---------- SCROLL PROGRESS ---------- */
-const progressBar=$('#scroll-progress');
-function updateProgress(){const h=document.documentElement.scrollHeight-window.innerHeight;if(progressBar&&h>0)progressBar.style.width=(window.scrollY/h*100)+'%'}
-window.addEventListener('scroll',updateProgress,{passive:true});
-
-/* ---------- CURSOR GLOW ---------- */
-const glow=$('#cursor-glow');
-let mx=window.innerWidth/2,my=window.innerHeight/2;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;if(glow){glow.style.left=mx+'px';glow.style.top=my+'px'}});
-document.addEventListener('touchmove',e=>{const t=e.touches[0];mx=t.clientX;my=t.clientY},{passive:true});
-
-/* ---------- NAV SCROLL ---------- */
-const nav=$('.nav');
-window.addEventListener('scroll',()=>{if(nav)nav.classList.toggle('scrolled',window.scrollY>60)},{passive:true});
-
-/* ---------- HAMBURGER ---------- */
-const hamburger=$('.hamburger');
-const mobileNav=$('.mobile-nav');
-if(hamburger&&mobileNav){
-  hamburger.addEventListener('click',()=>{
-    const active=hamburger.classList.toggle('active');
-    mobileNav.classList.toggle('active');
-    hamburger.setAttribute('aria-expanded',String(active));
-    document.body.style.overflow=active?'hidden':'';
-  });
-  mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-    hamburger.classList.remove('active');mobileNav.classList.remove('active');
-    hamburger.setAttribute('aria-expanded','false');
-    document.body.style.overflow='';
-  }));
-  document.addEventListener('keydown',e=>{
-    if(e.key==='Escape'&&mobileNav.classList.contains('active')){
-      hamburger.classList.remove('active');mobileNav.classList.remove('active');
-      hamburger.setAttribute('aria-expanded','false');
-      document.body.style.overflow='';
-    }
-  });
+/* Nav hamburger */
+var hb=$('.hamburger'),mn=$('.mobile-nav');
+if(hb&&mn){
+  hb.addEventListener('click',function(){var a=hb.classList.toggle('active');mn.classList.toggle('active');hb.setAttribute('aria-expanded',a);document.body.style.overflow=a?'hidden':''});
+  mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){hb.classList.remove('active');mn.classList.remove('active');document.body.style.overflow=''})});
 }
 
-/* ---------- SMOOTH SCROLL ---------- */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const target=document.querySelector(a.getAttribute('href'));
-    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}
-  });
-});
+/* Smooth scroll */
+$$('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}})});
 
-/* ---------- SCROLL REVEAL ---------- */
-const revealEls=$$('.reveal');
-const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}})},{threshold:0.1});
-revealEls.forEach(el=>revealObs.observe(el));
-window.addEventListener('scroll',function(){$$('.reveal:not(.visible)').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<window.innerHeight*0.88)el.classList.add('visible')})},{passive:true});
+/* Reveal */
+var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});
+$$('.reveal').forEach(function(el){ro.observe(el)});
 
-/* ---------- COUNTER ANIMATION ---------- */
-const counters=$$('[data-count]');
-const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCounter(e.target);counterObs.unobserve(e.target)}})},{threshold:0.5});
-counters.forEach(el=>counterObs.observe(el));
-function animateCounter(el){
-  const target=parseInt(el.dataset.count);
-  const dur=2000;const start=performance.now();
-  function tick(now){
-    const p=Math.min((now-start)/dur,1);
-    const ease=1-Math.pow(1-p,3);
-    const val=Math.floor(ease*target);
-    el.textContent=val+'+';
-    if(p<1)requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
+/* Counter */
+var co=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var el=e.target;var t=parseInt(el.dataset.count);if(!t)return;co.unobserve(el);var s=performance.now();(function tick(now){var p=Math.min((now-s)/1800,1);el.textContent=Math.floor((1-Math.pow(1-p,3))*t)+'+';if(p<1)requestAnimationFrame(tick)})(s)}})},{threshold:0.5});
+$$('[data-count]').forEach(function(el){co.observe(el)});
+
+/* Themes */
+var ct=lsg('theme','blackout');
+function setTheme(t){ct=t;document.documentElement.setAttribute('data-theme',t);lss('theme',t);$$('.ts-dot').forEach(function(d){d.classList.toggle('active',d.dataset.theme===t);d.setAttribute('aria-checked',d.dataset.theme===t)})}
+setTheme(ct);
+$$('.ts-dot').forEach(function(d){d.addEventListener('click',function(){setTheme(d.dataset.theme)})});
+
+/* Subtle particles */
+var canvas=$('#bg-canvas'),ctx=canvas.getContext('2d');
+var W,H,particles=[],breachActive=lsg('breach','off')==='on';
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;initParticles()}
+function initParticles(){
+  var count=breachActive?120:30;
+  particles=[];
+  for(var i=0;i<count;i++)particles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:1+Math.random()*1.5});
+}
+resize();
+window.addEventListener('resize',resize);
+
+function getAccent(){
+  var cs=getComputedStyle(document.documentElement);
+  var a=cs.getPropertyValue('--accent').trim();
+  /* Convert hex to rgb */
+  if(a.charAt(0)==='#'){var r=parseInt(a.substr(1,2),16),g=parseInt(a.substr(3,2),16),b=parseInt(a.substr(5,2),16);return r+','+g+','+b}
+  return '212,160,23';
 }
 
-/* ---------- MAGNETIC BUTTONS ---------- */
-$$('.magnetic-btn').forEach(btn=>{
-  btn.addEventListener('mousemove',e=>{
-    const r=btn.getBoundingClientRect();
-    const cx=r.left+r.width/2,cy=r.top+r.height/2;
-    const dx=(e.clientX-cx)*0.3,dy=(e.clientY-cy)*0.3;
-    btn.style.transform=`translate(${dx}px,${dy}px)`;
+function animLoop(){
+  ctx.clearRect(0,0,W,H);
+  var pc=getAccent();
+  particles.forEach(function(p){
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+    ctx.fillStyle='rgba('+pc+',0.25)';
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
   });
-  btn.addEventListener('mouseleave',()=>{btn.style.transform=''});
-  btn.addEventListener('click',e=>{
-    const ripple=document.createElement('span');ripple.className='ripple';
-    const r=btn.getBoundingClientRect();
-    ripple.style.left=(e.clientX-r.left)+'px';ripple.style.top=(e.clientY-r.top)+'px';
-    ripple.style.width=ripple.style.height=Math.max(r.width,r.height)+'px';
-    btn.appendChild(ripple);setTimeout(()=>ripple.remove(),600);
-  });
-});
-
-/* ---------- CARD TILT ---------- */
-$$('.card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`perspective(1000px) rotateY(${x*12}deg) rotateX(${-y*12}deg)`;
-  });
-  card.addEventListener('mouseleave',()=>{card.style.transform=''});
-});
-
-/* ==========================================================================
-   THEMES
-   ========================================================================== */
-let currentTheme=ls.get('theme',DEFAULT_THEME);
-function applyTheme(t){
-  currentTheme=t;
-  document.documentElement.setAttribute('data-theme',t);
-  ls.set('theme',t);
-  $$('.theme-dot').forEach(d=>{
-    d.classList.toggle('active',d.dataset.theme===t);
-    d.setAttribute('aria-checked',String(d.dataset.theme===t));
-  });
+  /* Lines between close particles */
+  if(breachActive){
+    for(var i=0;i<particles.length;i++){
+      for(var j=i+1;j<particles.length;j++){
+        var dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=dx*dx+dy*dy;
+        if(d<25000){ctx.strokeStyle='rgba('+pc+','+(1-d/25000)*0.15+')';ctx.lineWidth=0.5;ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke()}
+      }
+    }
+  }
+  requestAnimationFrame(animLoop);
 }
-applyTheme(currentTheme);
-$$('.theme-dot').forEach(d=>{
-  d.addEventListener('click',()=>applyTheme(d.dataset.theme));
-  d.addEventListener('keydown',e=>{if(e.key==='Enter')applyTheme(d.dataset.theme)});
-});
-
-/* ==========================================================================
-   TYPING EFFECT
-   ========================================================================== */
-const typedEl=$('#typed-text');
-let typedPhrases=[
-  'Anti-blowback floating mass technology',
-  'Machined from solid billets. Never cast.',
-  'Trusted by Special Operations worldwide',
-  'Lightest breaching tools on the market',
-  'Lifetime guarantee. Zero tools ever replaced.'
-];
-let phraseIdx=0,charIdx=0,isDeleting=false;
-function typeLoop(){
-  if(!typedEl)return;
-  const phrase=typedPhrases[phraseIdx];
-  if(!isDeleting){
-    typedEl.textContent=phrase.substring(0,charIdx+1);charIdx++;
-    if(charIdx>=phrase.length){setTimeout(()=>{isDeleting=true;typeLoop()},2200);return}
-    setTimeout(typeLoop,45);
-  }else{
-    typedEl.textContent=phrase.substring(0,charIdx-1);charIdx--;
-    if(charIdx<=0){isDeleting=false;phraseIdx=(phraseIdx+1)%typedPhrases.length;setTimeout(typeLoop,400);return}
-    setTimeout(typeLoop,25);
-  }
-}
-setTimeout(typeLoop,1800);
-
-/* ==========================================================================
-   VOICE DATA (7 voices)
-   ========================================================================== */
-var voices = {
-  "the-operator": {
-    "hero-label": "Spreading the Promise of Freedom One Door at a Time",
-    "hero-h1": "Double-Tap Breaching Tools",
-    "hero-sub": "Built by Breachers for Breachers",
-    "hero-cta": "Shop All Products",
-    "stat1-label": "Tactical Tools",
-    "stat2-number": "Since 2007",
-    "stat2-label": "In the Field",
-    "stat3-number": "0",
-    "stat3-label": "Failures",
-    "stat4-number": "Lifetime",
-    "stat4-label": "Guarantee",
-    "products-label": "Featured Products",
-    "products-title": "Tools That Never Fail",
-    "products-subtitle": "Every tool machined from solid billets. Anti-blowback floating mass technology. Trusted by operators worldwide.",
-    "catalog-title": "Full Product Catalog",
-    "features-label": "Technology",
-    "features-title": "Engineered to Dominate",
-    "features-subtitle": "Every Double-Tap tool is the product of combat-tested engineering and aerospace-grade materials.",
-    "feature1-title": "Anti-Blowback Floating Mass",
-    "feature1-desc": "Internal floating mass technology absorbs impact energy and eliminates blowback and vibration. Unique to Double-Tap. Zero energy wasted on the operator.",
-    "feature2-title": "Aerospace-Grade Materials",
-    "feature2-desc": "Ti-6Al-4V titanium, 6061T6 aluminum, 303 stainless steel, and 4140 chromoly steel. Machined from solid billets\u2014never cast. Stronger at the molecular level.",
-    "feature3-title": "Hardcoat Anodized Finish",
-    "feature3-desc": "Deep hard anodized aluminum handles at .002\" thickness. Second hardest natural substance after diamond. Corrosion-proof. Battle-ready in any environment.",
-    "feature4-title": "Billet Machined Precision",
-    "feature4-desc": "Every component is CNC-machined from solid metal billets. No casting, no weak points, no air pockets. Uniform grain structure throughout for maximum impact resistance.",
-    "feature5-title": "Lightest on the Market",
-    "feature5-desc": "Collapsible design with positive locking shaft. Easy grasp handles with lanyard connections. Maximum breach force at minimum operator weight. Every ounce earns its place.",
-    "feature6-title": "Made in the USA",
-    "feature6-desc": "Every tool manufactured in Fayetteville, North Carolina. American materials. American labor. 98% aluminum recycling rate. Supporting the Americans who serve.",
-    "about-label": "Our Story",
-    "about-title": "Born in Combat. Built in Fayetteville.",
-    "about-p1": "BCM Inc. started as a welding company in 2004 in Fayetteville, North Carolina\u2014home of Fort Liberty and the 82nd Airborne. By mid-2006, a master breacher with real-world operational experience shifted the company\u2019s focus to what he knew best: breaching tools that actually work when lives depend on them.",
-    "about-p2": "Since January 2007, Double-Tap tools have been in the hands of operators across law enforcement, military, fire departments, and SWAT teams worldwide. The philosophy is simple: build the tool you\u2019d trust your own life to, then make it available to every operator who needs it.",
-    "about-p3": "Every tool features the patented anti-blowback floating mass system\u2014a technology that exists because a breacher understood what engineers couldn\u2019t: the difference between hitting a door in a lab and hitting one at 3 AM with your team stacked behind you.",
-    "testimonial-label": "Testimonials",
-    "testimonial-title": "Field-Tested. Operator-Approved.",
-    "testimonial-quote": "The fit and finish of this product exceeded all of my and our expectations. We have tested the device extensively and found it to far surpass its suggested load limits and quality in all areas evaluated. I openly and wholeheartedly recommend your complete product line sincerely, honestly and enthusiastically without hesitation.",
-    "testimonial-author": "Monte Le Gould",
-    "testimonial-role": "State Peace Officer \u2022 SWAT/HRT Trainer and Team Leader \u2022 California \u2022 20+ Years Experience",
-    "guarantee-label": "Our Promise",
-    "guarantee-title": "Lifetime Guarantee",
-    "guarantee-desc": "We will replace any broken tool free of charge for life due to manufacturing or material defect. Free shipping on all replacements. Free labor on rebuilds\u2014you only pay for parts. In our entire history, we have never had to rebuild or replace a single tool.",
-    "guarantee-stat": "0 Tools Ever Replaced",
-    "distributors-title": "Authorized Distribution",
-    "distributors-desc": "Double-Tap Breaching Tools are available through authorized distributors and direct from BCM Inc. Contact us for volume pricing, department orders, and distribution inquiries.",
-    "cta-label": "Ready to Equip?",
-    "cta-title": "Ready to Breach?",
-    "cta-desc": "Equip your team with the tools that have never failed. Zero replacements. Zero rebuilds. Lifetime guarantee.",
-    "cta-btn1": "Shop All Products",
-    "cta-btn2": "Contact Us",
-    "footer-tagline": "Spreading the Promise of Freedom One Door at a Time. US-made tactical breaching tools trusted by operators worldwide."
-  },
-  "the-commander": {
-    "hero-label": "Strategic Asset Acquisition for Tactical Operations",
-    "hero-h1": "Double-Tap Breaching Tools",
-    "hero-sub": "Force Multipliers for Your Department",
-    "hero-cta": "Review Product Line",
-    "stat1-label": "Force Multipliers",
-    "stat2-number": "Since 2007",
-    "stat2-label": "Operational History",
-    "stat3-number": "0",
-    "stat3-label": "Equipment Failures",
-    "stat4-number": "Lifetime",
-    "stat4-label": "Service Warranty",
-    "products-label": "Asset Catalog",
-    "products-title": "Equip Your Team to Outperform",
-    "products-subtitle": "Procurement-grade equipment that outlasts every budget cycle. One purchase decision your department will never second-guess.",
-    "catalog-title": "Complete Equipment Inventory",
-    "features-label": "Strategic Advantage",
-    "features-title": "Equipment That Justifies Every Dollar",
-    "features-subtitle": "Superior technology translates to operational advantage. These specifications make the procurement case themselves.",
-    "feature1-title": "Blowback Elimination System",
-    "feature1-desc": "Proprietary floating mass architecture redirects impact energy forward, not back into the operator. Reduces fatigue across extended operations. A measurable performance advantage.",
-    "feature2-title": "Military-Specification Materials",
-    "feature2-desc": "Grade 5 titanium, aircraft-aluminum, medical-grade stainless, and ordnance-quality chromoly. Each alloy selected for specific performance requirements. Over-engineered by design.",
-    "feature3-title": "Environmental Hardening",
-    "feature3-desc": "Type III hardcoat anodizing at .002 inch provides a surface exceeded in hardness only by diamond. Resistant to corrosion, abrasion, and extreme temperature cycling.",
-    "feature4-title": "Zero-Defect Manufacturing",
-    "feature4-desc": "CNC billet machining eliminates the porosity, shrinkage, and grain boundary weaknesses inherent in cast components. Every unit meets dimensional specification to within thousandths.",
-    "feature5-title": "Operational Weight Advantage",
-    "feature5-desc": "Lightest tools in the category. Collapsible architecture with positive-lock mechanism. Your operators arrive at the breach point with more energy for the task at hand.",
-    "feature6-title": "Domestic Supply Chain",
-    "feature6-desc": "Manufactured in Fayetteville, NC. American raw materials, American workforce, American quality standards. No overseas supply chain risk. TAA and Berry Amendment compatible.",
-    "about-label": "Organizational History",
-    "about-title": "Purpose-Built for the Mission",
-    "about-p1": "BCM Inc. was established in 2004 at Fayetteville, North Carolina\u2014adjacent to Fort Liberty and embedded in the Special Operations community. The founder transitioned from welding to tactical tool manufacturing in 2006, applying direct operational experience to product design.",
-    "about-p2": "Since market introduction in January 2007, the product line has been adopted by law enforcement agencies, military units, fire departments, and SWAT teams across multiple continents. The ROI case is straightforward: buy once, deploy indefinitely.",
-    "about-p3": "The floating mass system was developed by an operator who understood that breaching tool performance is measured under stress, not in controlled testing environments. That operational perspective drives every engineering decision.",
-    "testimonial-label": "Operational Endorsements",
-    "testimonial-title": "Trusted at the Command Level",
-    "testimonial-quote": "The fit and finish of this product exceeded all of my and our expectations. We have tested the device extensively and found it to far surpass its suggested load limits and quality in all areas evaluated. I openly and wholeheartedly recommend your complete product line sincerely, honestly and enthusiastically without hesitation.",
-    "testimonial-author": "Monte Le Gould",
-    "testimonial-role": "State Peace Officer \u2022 SWAT/HRT Trainer and Team Leader \u2022 California \u2022 20+ Years Experience",
-    "guarantee-label": "Acquisition Assurance",
-    "guarantee-title": "Lifetime Service Guarantee",
-    "guarantee-desc": "Full replacement at no cost for any manufacturing or material defect, for life. Free shipping on warranty replacements. Free labor on any rebuild\u2014parts cost only. To date, we have processed zero replacement claims. The equipment does not fail.",
-    "guarantee-stat": "Zero Warranty Claims Filed",
-    "distributors-title": "Procurement Channels",
-    "distributors-desc": "Available through GSA-compatible distributors and direct purchase. Department pricing, volume discounts, and agency purchase order processing available upon request.",
-    "cta-label": "Strategic Decision Point",
-    "cta-title": "Authorize the Procurement",
-    "cta-desc": "Your team deserves equipment with a zero-failure track record. One budget line item. Lifetime of operational readiness.",
-    "cta-btn1": "Review Full Catalog",
-    "cta-btn2": "Request Quote",
-    "footer-tagline": "Strategic tactical equipment for departments that demand zero-failure performance. Lifetime guarantee. US-manufactured."
-  },
-  "the-engineer": {
-    "hero-label": "Precision-Machined Tactical Entry Solutions",
-    "hero-h1": "Double-Tap Breaching Tools",
-    "hero-sub": "Engineered Beyond Specification",
-    "hero-cta": "Explore Product Specifications",
-    "stat1-label": "Tool Variants",
-    "stat2-number": "Since 2007",
-    "stat2-label": "In Production",
-    "stat3-number": "0",
-    "stat3-label": "Structural Failures",
-    "stat4-number": "Lifetime",
-    "stat4-label": "Material Warranty",
-    "products-label": "Product Specifications",
-    "products-title": "Material Science Meets Operational Design",
-    "products-subtitle": "Ti-6Al-4V alpha-beta alloy. 6061T6 heat-treated aluminum. CNC billet machining to within .002 inch tolerance across every critical surface.",
-    "catalog-title": "Complete Specifications List",
-    "features-label": "Engineering",
-    "features-title": "Specifications That Speak for Themselves",
-    "features-subtitle": "Every material selection, every tolerance, every surface treatment is backed by metallurgical reasoning and validated in operational conditions.",
-    "feature1-title": "Floating Mass Dynamics",
-    "feature1-desc": "Internal floating mass creates a momentum transfer delay that absorbs peak impact force before it reaches the operator\u2019s hands. Measured blowback reduction exceeds 60% versus conventional solid-core designs.",
-    "feature2-title": "Alloy Selection Matrix",
-    "feature2-desc": "Ti-6Al-4V: 120 ksi ultimate tensile strength. 6061T6: optimal strength-to-weight in the aluminum family. 303 SS: machinability with corrosion resistance. 4140 chromoly: 95 ksi yield strength with through-hardening capability.",
-    "feature3-title": "Type III Hardcoat Anodizing",
-    "feature3-desc": ".002 inch aluminum oxide layer via sulfuric acid electrolysis at controlled temperature. 60-70 Rockwell C equivalent hardness. Dielectric. Exceeds MIL-A-8625F specifications for wear resistance.",
-    "feature4-title": "Billet vs. Casting Analysis",
-    "feature4-desc": "Wrought billet stock provides continuous grain flow with zero porosity. Cast components exhibit dendritic grain structures and shrinkage cavities that concentrate stress under impact loading. The difference shows under a metallographic microscope\u2014and under operational use.",
-    "feature5-title": "Weight Optimization Engineering",
-    "feature5-desc": "FEA-optimized cross-sections remove non-load-bearing material while maintaining impact resistance. Positive-engagement locking mechanism rated beyond operational load requirements. Collapsible geometry reduces transport profile by 40%.",
-    "feature6-title": "Domestic Manufacturing Process",
-    "feature6-desc": "3-axis and 5-axis CNC machining. In-house quality control with CMM verification. 98% aluminum recycling rate in the Fayetteville, NC production facility. Full lot traceability from raw stock to finished tool.",
-    "about-label": "Technical History",
-    "about-title": "When an Operator Engineers a Better Tool",
-    "about-p1": "BCM Inc. was founded in 2004 as a precision welding operation in Fayetteville, NC. In 2006, the founder\u2014a master breacher with direct operational experience\u2014identified a fundamental flaw in existing breaching tool designs: excessive blowback due to rigid-body impact dynamics.",
-    "about-p2": "The solution was an internal floating mass that decouples the impact event from operator contact. By January 2007, the first production tools were field-deployed. The design has been iteratively refined through real-world operator feedback across 18 years of continuous production.",
-    "about-p3": "Every Double-Tap tool represents a convergence of materials science, impact dynamics, and practical field experience that academic engineering alone cannot replicate. The test protocol isn\u2019t a specification sheet\u2014it\u2019s a breach.",
-    "testimonial-label": "Technical Validation",
-    "testimonial-title": "Performance Data from the Field",
-    "testimonial-quote": "The fit and finish of this product exceeded all of my and our expectations. We have tested the device extensively and found it to far surpass its suggested load limits and quality in all areas evaluated. I openly and wholeheartedly recommend your complete product line sincerely, honestly and enthusiastically without hesitation.",
-    "testimonial-author": "Monte Le Gould",
-    "testimonial-role": "State Peace Officer \u2022 SWAT/HRT Trainer and Team Leader \u2022 California \u2022 20+ Years Experience",
-    "guarantee-label": "Material Guarantee",
-    "guarantee-title": "Lifetime Structural Warranty",
-    "guarantee-desc": "Any manufacturing defect or material failure results in free replacement for the life of the tool. Free freight. Free labor on rebuilds\u2014parts at cost. In 18+ years of production, zero tools have required replacement due to structural failure. The metallurgy holds.",
-    "guarantee-stat": "Zero Structural Failures Recorded",
-    "distributors-title": "Distribution Network",
-    "distributors-desc": "Available direct from BCM Inc. and through authorized distribution partners. Technical specifications, CAD drawings, and material certifications available upon request for procurement engineers.",
-    "cta-label": "Technical Inquiry",
-    "cta-title": "Request Technical Data Package",
-    "cta-desc": "Material certifications, dimensional specifications, and test data available. The numbers make the case\u2014examine them.",
-    "cta-btn1": "View All Specifications",
-    "cta-btn2": "Request Tech Data",
-    "footer-tagline": "Precision-engineered tactical tools. Ti-6Al-4V, 6061T6, billet-machined, hardcoat anodized. Fayetteville, NC."
-  },
-  "the-veteran": {
-    "hero-label": "Trusted by Those Who\u2019ve Been Through the Door",
-    "hero-h1": "Double-Tap Breaching Tools",
-    "hero-sub": "Built by Breachers for Breachers",
-    "hero-cta": "See the Full Line",
-    "stat1-label": "Tools in Service",
-    "stat2-number": "Since 2007",
-    "stat2-label": "Proven in the Field",
-    "stat3-number": "0",
-    "stat3-label": "Failures in Service",
-    "stat4-number": "Lifetime",
-    "stat4-label": "Guarantee",
-    "products-label": "The Tools",
-    "products-title": "Gear That Earns Its Place on the Stack",
-    "products-subtitle": "I\u2019ve carried tools that bent, broke, and let me down. These don\u2019t. After 18 years in operators\u2019 hands, not one has come back broken.",
-    "catalog-title": "Every Tool in the Line",
-    "features-label": "Why These Tools",
-    "features-title": "The Difference Is in the Details",
-    "features-subtitle": "The things that matter can\u2019t be seen in a catalog photo. They show up at 3 AM when you\u2019re on the third hit and the door hasn\u2019t moved.",
-    "feature1-title": "Floating Mass\u2014Feel the Difference",
-    "feature1-desc": "First hit, you know. The energy goes into the door, not back up your arms. After a full night of operations, your hands still work. That\u2019s not marketing. That\u2019s what 18 years of field reports say.",
-    "feature2-title": "Materials That Take Punishment",
-    "feature2-desc": "Titanium, aircraft aluminum, stainless, chromoly. I\u2019ve seen tools made from lesser metals that crack in cold weather or mushroom after repeated hits. These don\u2019t. Full stop.",
-    "feature3-title": "A Finish That Survives",
-    "feature3-desc": "Hardcoat anodizing isn\u2019t cosmetic\u2014it\u2019s armor. I\u2019ve dragged these through mud, sand, concrete dust, and salt spray. The finish looks the same as the day I unboxed them.",
-    "feature4-title": "Machined, Not Cast",
-    "feature4-desc": "I\u2019ve had cast tools crack along hidden voids that nobody could see until it failed mid-operation. Billet machining eliminates that risk entirely. I learned this lesson the expensive way.",
-    "feature5-title": "Light Enough to Carry All Night",
-    "feature5-desc": "When you\u2019re stacking up for the fourth time in one operation, every ounce matters. These are the lightest tools I\u2019ve used that still hit hard enough to do the job on the first strike.",
-    "feature6-title": "Made Where We Train",
-    "feature6-desc": "Fayetteville, NC. Next to Fort Liberty. The guy who designed these tools used tools like them before he built better ones. That proximity to the operator community isn\u2019t an accident.",
-    "about-label": "How It Started",
-    "about-title": "A Breacher Built a Better Tool",
-    "about-p1": "The founder of BCM Inc. wasn\u2019t an engineer who read about breaching. He was a master breacher who got tired of tools that couldn\u2019t keep up with the operators using them. He started a welding shop in 2004 in Fayetteville, NC, and by 2006, he was building the tools he wished he\u2019d had.",
-    "about-p2": "Since January 2007, these tools have been deployed by operators who don\u2019t have the luxury of equipment failure. SWAT teams, military units, fire departments\u2014the people who go through doors when everyone else is running away from them.",
-    "about-p3": "The floating mass system wasn\u2019t born in a design studio. It came from a guy who\u2019d put thousands of hits on doors and knew exactly where the energy was going wrong. That\u2019s the kind of experience you can\u2019t fake.",
-    "testimonial-label": "From an Operator",
-    "testimonial-title": "Words from Someone Who\u2019s Used Them",
-    "testimonial-quote": "The fit and finish of this product exceeded all of my and our expectations. We have tested the device extensively and found it to far surpass its suggested load limits and quality in all areas evaluated. I openly and wholeheartedly recommend your complete product line sincerely, honestly and enthusiastically without hesitation.",
-    "testimonial-author": "Monte Le Gould",
-    "testimonial-role": "State Peace Officer \u2022 SWAT/HRT Trainer and Team Leader \u2022 California \u2022 20+ Years Experience",
-    "guarantee-label": "A Guarantee That Means Something",
-    "guarantee-title": "Lifetime. No Fine Print.",
-    "guarantee-desc": "Break it, they replace it. Free. For life. Free shipping, free labor on rebuilds. But here\u2019s what matters: they\u2019ve never had to do it. Not once. In 18 years. That tells you everything you need to know about these tools.",
-    "guarantee-stat": "Zero Replacements in 18 Years",
-    "distributors-title": "Where to Get Them",
-    "distributors-desc": "Available direct or through authorized distributors. Department orders, volume pricing\u2014reach out. They make it easy because the tools sell themselves.",
-    "cta-label": "Time to Upgrade",
-    "cta-title": "Upgrade Your Stack",
-    "cta-desc": "You\u2019ve used tools that let you down. These won\u2019t. I\u2019ve staked my operations on them, and they\u2019ve never come up short.",
-    "cta-btn1": "Shop the Full Line",
-    "cta-btn2": "Talk to BCM",
-    "footer-tagline": "Built by a breacher. Proven by operators. 18 years, zero failures. That\u2019s the only endorsement that matters."
-  },
-  "the-instructor": {
-    "hero-label": "Training-Grade Equipment for Professional Development",
-    "hero-h1": "Double-Tap Breaching Tools",
-    "hero-sub": "Equipment Reliability Is Not Optional",
-    "hero-cta": "Explore Training Solutions",
-    "stat1-label": "Training Tools",
-    "stat2-number": "Since 2007",
-    "stat2-label": "Training Partners",
-    "stat3-number": "0",
-    "stat3-label": "Equipment Failures",
-    "stat4-number": "Lifetime",
-    "stat4-label": "Guarantee",
-    "products-label": "Training Equipment",
-    "products-title": "Train Like You Fight",
-    "products-subtitle": "When training your team on forced entry, you need tools that perform identically on rep 500 as they did on rep 1. Consistency builds competence.",
-    "catalog-title": "Full Training Catalog",
-    "features-label": "Training Advantage",
-    "features-title": "Better Tools Build Better Operators",
-    "features-subtitle": "Training frequency is limited by equipment durability. Eliminate that constraint. These tools don\u2019t degrade with use.",
-    "feature1-title": "Floating Mass for Repetitive Training",
-    "feature1-desc": "The anti-blowback system isn\u2019t just a field advantage\u2014it\u2019s a training multiplier. Your students can execute more reps per session without fatigue-induced form breakdown. Better practice, better muscle memory.",
-    "feature2-title": "Materials That Survive Training Cycles",
-    "feature2-desc": "Training environments destroy equipment faster than operational use. These alloys\u2014titanium, aircraft aluminum, chromoly\u2014are selected for fatigue resistance across thousands of impact cycles.",
-    "feature3-title": "Hardcoat That Endures Abuse",
-    "feature3-desc": "Training means repeated contact with concrete, steel, and wood. The Type III anodized finish maintains surface integrity through the kind of sustained abuse that strips lesser coatings in weeks.",
-    "feature4-title": "Consistent Performance Baseline",
-    "feature4-desc": "Billet-machined tools deliver the same impact characteristics on every strike. Your students learn proper technique without compensating for tool inconsistencies. Standardized equipment produces standardized results.",
-    "feature5-title": "Carry Weight in Training Scenarios",
-    "feature5-desc": "Realistic training means full equipment loads over extended scenarios. The lightest tools on the market keep your training scenarios realistic without unnecessary physical attrition.",
-    "feature6-title": "Dedicated Training Platforms",
-    "feature6-desc": "The Free Standing Explosive Breaching Door Apparatus and Exothermic Breaching Door are purpose-built for training environments. Reusable, configurable, and built to the same standard as every Double-Tap tool.",
-    "about-label": "Teaching Philosophy",
-    "about-title": "An Instructor\u2019s Perspective on Equipment",
-    "about-p1": "I\u2019ve trained hundreds of operators on forced entry. The single biggest variable that undermines training outcomes isn\u2019t technique or fitness\u2014it\u2019s inconsistent equipment. Tools that perform differently when cold, or after 200 reps, or after being dropped on concrete. BCM eliminated that variable.",
-    "about-p2": "Since 2007, Double-Tap tools have been the standard for training programs that take equipment reliability seriously. When your students are learning precise technique, the last thing you want is a tool that changes behavior between sessions.",
-    "about-p3": "The training-specific products\u2014the explosive breaching door apparatus and the exothermic breaching door\u2014were designed by someone who ran training programs and knew exactly what was missing from the market.",
-    "testimonial-label": "Instructor Endorsement",
-    "testimonial-title": "Trusted in the Training Environment",
-    "testimonial-quote": "The fit and finish of this product exceeded all of my and our expectations. We have tested the device extensively and found it to far surpass its suggested load limits and quality in all areas evaluated. I openly and wholeheartedly recommend your complete product line sincerely, honestly and enthusiastically without hesitation.",
-    "testimonial-author": "Monte Le Gould",
-    "testimonial-role": "State Peace Officer \u2022 SWAT/HRT Trainer and Team Leader \u2022 California \u2022 20+ Years Experience",
-    "guarantee-label": "Training Investment Protection",
-    "guarantee-title": "Lifetime Guarantee on Every Tool",
-    "guarantee-desc": "Training environments punish equipment harder than operational deployments. The lifetime guarantee covers it regardless. Free replacement, free shipping, free labor. In 18 years of training and operational use combined, they have replaced exactly zero tools.",
-    "guarantee-stat": "Zero Training Failures",
-    "distributors-title": "Training Program Partnerships",
-    "distributors-desc": "Department training programs and academies: contact BCM for institutional pricing, training package configurations, and curriculum equipment recommendations.",
-    "cta-label": "Equip Your Program",
-    "cta-title": "Upgrade Your Training Arsenal",
-    "cta-desc": "Your students deserve tools that teach proper technique through consistent performance. Equipment failures during training create bad habits. Eliminate the variable.",
-    "cta-btn1": "View Training Equipment",
-    "cta-btn2": "Program Inquiry",
-    "footer-tagline": "Training-grade breaching tools that perform the same on rep 1 as rep 1,000. Zero equipment failures. Built for programs that demand consistency."
-  },
-  "the-quartermaster": {
-    "hero-label": "One Purchase Order. Lifetime of Operational Readiness.",
-    "hero-h1": "Double-Tap Breaching Tools",
-    "hero-sub": "Eliminate Replacement Costs Permanently",
-    "hero-cta": "Review Inventory Options",
-    "stat1-label": "SKUs Available",
-    "stat2-number": "Since 2007",
-    "stat2-label": "Supply Track Record",
-    "stat3-number": "0",
-    "stat3-label": "Warranty Returns",
-    "stat4-number": "Lifetime",
-    "stat4-label": "Service Life",
-    "products-label": "Inventory",
-    "products-title": "One Purchase. Lifetime of Service.",
-    "products-subtitle": "No replacement orders. No maintenance contracts. No consumables budget. Buy once, field indefinitely, close the line item forever.",
-    "catalog-title": "Complete Inventory List",
-    "features-label": "Cost Analysis",
-    "features-title": "The Logistics of Never Replacing Equipment",
-    "features-subtitle": "Every feature translates to a line item you\u2019ll never have to budget for again. Run the numbers.",
-    "feature1-title": "Reduced Operator Downtime",
-    "feature1-desc": "The floating mass system reduces operator fatigue and repetitive strain. Fewer injury reports, fewer light-duty rotations, fewer staffing gaps. The tool pays for itself in avoided medical costs alone.",
-    "feature2-title": "Permanent Materials Investment",
-    "feature2-desc": "Grade 5 titanium doesn\u2019t corrode. Aircraft aluminum doesn\u2019t fatigue-crack under normal use. Chromoly steel doesn\u2019t deform. These materials outlast the budget cycle that purchased them.",
-    "feature3-title": "Zero Refinishing Required",
-    "feature3-desc": "Type III hardcoat anodizing doesn\u2019t chip, peel, or wear through under operational use. No annual refinishing. No appearance-based replacement triggers. The tool looks serviceable indefinitely.",
-    "feature4-title": "Elimination of Casting Failures",
-    "feature4-desc": "Cast-tool replacement is an unpredictable budget liability. Billet machining eliminates casting defect failures entirely. Predictable equipment performance means predictable equipment costs: zero.",
-    "feature5-title": "Transport and Storage Efficiency",
-    "feature5-desc": "Collapsible design reduces storage footprint by 40%. Lighter weight means lower shipping costs on bulk orders. Positive locking mechanism eliminates the \"loose tool in transit\" damage that creates write-offs.",
-    "feature6-title": "Domestic Sourcing Advantage",
-    "feature6-desc": "No import duties, no customs delays, no container shipping risks. Fayetteville, NC to your facility. Lead times measured in days, not months. No exchange rate exposure.",
-    "about-label": "Supply History",
-    "about-title": "18 Years. Zero Replacement Orders.",
-    "about-p1": "BCM Inc. has been manufacturing breaching tools in Fayetteville, NC since 2004. In that time, they have processed exactly zero warranty replacement orders. The supply chain implication is straightforward: these tools do not generate follow-on procurement requirements.",
-    "about-p2": "Every agency that has purchased Double-Tap tools has removed breaching equipment from their recurring procurement budget. The lifetime guarantee isn\u2019t aspirational\u2014it\u2019s actuarial. The failure rate is zero.",
-    "about-p3": "The founder\u2019s operational background means the tool designs account for field logistics: collapsible for transport, corrosion-resistant for long-term storage, consistent across temperature extremes. These are supply-chain-aware designs.",
-    "testimonial-label": "Procurement Endorsement",
-    "testimonial-title": "Validated by Equipment Managers",
-    "testimonial-quote": "The fit and finish of this product exceeded all of my and our expectations. We have tested the device extensively and found it to far surpass its suggested load limits and quality in all areas evaluated. I openly and wholeheartedly recommend your complete product line sincerely, honestly and enthusiastically without hesitation.",
-    "testimonial-author": "Monte Le Gould",
-    "testimonial-role": "State Peace Officer \u2022 SWAT/HRT Trainer and Team Leader \u2022 California \u2022 20+ Years Experience",
-    "guarantee-label": "Total Cost of Ownership",
-    "guarantee-title": "Lifetime Guarantee. Zero Recurring Cost.",
-    "guarantee-desc": "Free replacement for life on manufacturing or material defects. Free shipping. Free rebuild labor. Parts at cost. Net warranty claim count across the entire product history: zero. Your total cost of ownership equals your purchase price. Period.",
-    "guarantee-stat": "Total Replacement Cost: $0",
-    "distributors-title": "Supply Channels",
-    "distributors-desc": "Direct procurement and authorized distributor network. Volume pricing, blanket purchase agreements, and multi-year contract options available. Contact logistics team for lead times and delivery scheduling.",
-    "cta-label": "Close the Requisition",
-    "cta-title": "Issue the Purchase Order",
-    "cta-desc": "One purchase. Lifetime of service. No replacement orders. No maintenance contracts. No downtime. Close the line item permanently.",
-    "cta-btn1": "View Full Inventory",
-    "cta-btn2": "Request PO Quote",
-    "footer-tagline": "One purchase order. Lifetime of service. Zero replacement requisitions. Zero warranty claims. Domestic manufacturing, domestic delivery."
-  },
-  "the-patriot": {
-    "hero-label": "American Steel. American Hands. American Guarantee.",
-    "hero-h1": "Double-Tap Breaching Tools",
-    "hero-sub": "Built for the Americans on the Front Line",
-    "hero-cta": "Shop American-Made Tools",
-    "stat1-label": "American Tools",
-    "stat2-number": "Since 2007",
-    "stat2-label": "Made in the USA",
-    "stat3-number": "0",
-    "stat3-label": "Failures",
-    "stat4-number": "Lifetime",
-    "stat4-label": "American Guarantee",
-    "products-label": "American Made",
-    "products-title": "Forged in America. Trusted Worldwide.",
-    "products-subtitle": "Every tool built by American hands from American materials in Fayetteville, North Carolina. No overseas manufacturing. No compromises.",
-    "catalog-title": "Complete American-Made Catalog",
-    "features-label": "American Manufacturing",
-    "features-title": "Built Right Here. Built Right.",
-    "features-subtitle": "American materials, American craftsmanship, American quality standards. Supporting the men and women who keep this country safe.",
-    "feature1-title": "American Innovation",
-    "feature1-desc": "The anti-blowback floating mass system was invented in America by an American breacher who served this country. It\u2019s the kind of innovation that only comes from operators who\u2019ve been through the door themselves.",
-    "feature2-title": "American-Sourced Materials",
-    "feature2-desc": "Grade 5 titanium, aircraft-grade aluminum, domestic stainless steel, and American chromoly. Every raw material sourced and processed in the United States. No foreign dependency in the supply chain.",
-    "feature3-title": "American Quality Standards",
-    "feature3-desc": "Type III hardcoat anodizing to military specification. Dimensional tolerances held to thousandths of an inch. Quality control standards that exceed what any overseas factory would attempt, let alone achieve.",
-    "feature4-title": "American Craftsmanship",
-    "feature4-desc": "CNC billet machining in Fayetteville, NC. Each tool machined from solid American metal by American machinists. No casting shortcuts, no outsourced components, no corners cut.",
-    "feature5-title": "Built for American Operators",
-    "feature5-desc": "The lightest, strongest breaching tools on the market\u2014designed by an American operator for American operators. Every feature exists because someone who serves this country said it needed to be there.",
-    "feature6-title": "American Environmental Responsibility",
-    "feature6-desc": "98% aluminum recycling rate at the Fayetteville production facility. American manufacturing done right\u2014supporting our troops, supporting our economy, and respecting our land.",
-    "about-label": "An American Story",
-    "about-title": "From American Service to American Manufacturing",
-    "about-p1": "BCM Inc. was founded in 2004 in Fayetteville, North Carolina\u2014the heart of American military culture, home to Fort Liberty and the 82nd Airborne. The founder is a master breacher who took what he learned serving this country and turned it into tools worthy of the Americans who use them.",
-    "about-p2": "Since January 2007, Double-Tap tools have been in the hands of American law enforcement, American military units, and American fire departments. When our people stack up at 3 AM to protect American communities, they deserve American-made tools that will never let them down.",
-    "about-p3": "This isn\u2019t just manufacturing. It\u2019s an American supporting Americans. Every tool sold keeps American machinists employed, American families supported, and American manufacturing alive. That\u2019s a circle worth completing.",
-    "testimonial-label": "American Endorsement",
-    "testimonial-title": "Trusted by American Operators",
-    "testimonial-quote": "The fit and finish of this product exceeded all of my and our expectations. We have tested the device extensively and found it to far surpass its suggested load limits and quality in all areas evaluated. I openly and wholeheartedly recommend your complete product line sincerely, honestly and enthusiastically without hesitation.",
-    "testimonial-author": "Monte Le Gould",
-    "testimonial-role": "State Peace Officer \u2022 SWAT/HRT Trainer and Team Leader \u2022 California \u2022 20+ Years Experience",
-    "guarantee-label": "An American Promise",
-    "guarantee-title": "Lifetime American Guarantee",
-    "guarantee-desc": "An American company standing behind American products with an American guarantee: break it, we replace it, free, for life. Free shipping. Free labor. And in our entire history of serving American operators, we have never once had to make good on that guarantee. Because the tools don\u2019t break.",
-    "guarantee-stat": "Zero Failures. 100% American.",
-    "distributors-title": "American Distribution",
-    "distributors-desc": "Available direct from BCM Inc. in Fayetteville, NC, and through authorized American distributors. Supporting American supply chains, American jobs, and American operators.",
-    "cta-label": "Support American Manufacturing",
-    "cta-title": "Buy American. Breach American.",
-    "cta-desc": "American steel, American hands, American guarantee. Equip your team with tools made by the country they serve.",
-    "cta-btn1": "Shop American-Made",
-    "cta-btn2": "Contact BCM",
-    "footer-tagline": "American steel. American hands. American guarantee. Built in Fayetteville, NC for the Americans on the front line."
-  }
-};
-
-/* ==========================================================================
-   VOICE SWITCHER
-   ========================================================================== */
-(function(){
-  var toggle = document.getElementById('voiceToggle');
-  var panel = document.getElementById('voicePanel');
-  var options = panel.querySelectorAll('.voice-option');
-  var saved = localStorage.getItem('breaching-voice') || 'the-operator';
-
-  function applyVoice(voiceId) {
-    var voice = voices[voiceId];
-    if (!voice) return;
-    document.querySelectorAll('[data-voice]').forEach(function(el) {
-      var key = el.getAttribute('data-voice');
-      if (voice[key] !== undefined) {
-        el.style.opacity = '0';
-        setTimeout(function() {
-          if (voice[key].indexOf('<span') > -1 || voice[key].indexOf('<strong') > -1 || voice[key].indexOf('<a') > -1) {
-            el.innerHTML = voice[key];
-          } else {
-            el.textContent = voice[key];
-          }
-          el.style.opacity = '1';
-        }, 200);
-      }
-    });
-    /* Update typed phrases per voice */
-    var voicePhrases = {
-      'the-operator': ['Anti-blowback floating mass technology','Machined from solid billets. Never cast.','Trusted by Special Operations worldwide','Lightest breaching tools on the market','Lifetime guarantee. Zero tools ever replaced.'],
-      'the-commander': ['Strategic force multiplier for your department','Zero-failure track record since 2007','One budget line item. Lifetime of readiness.','ROI that justifies itself on day one','Procurement-grade equipment. Command-level trust.'],
-      'the-engineer': ['Ti-6Al-4V alpha-beta alloy. 120 ksi UTS.','CNC billet machining to .002 inch tolerance','Type III hardcoat: 60-70 Rockwell C equivalent','Wrought grain structure. Zero porosity.','Measured blowback reduction exceeds 60%.'],
-      'the-veteran': ['I\u2019ve used these in conditions that break lesser gear','18 years. Zero tools have come back broken.','First hit, you know. The energy goes forward.','Built by a breacher who\u2019s been through the door','The only tools I\u2019d stake my operation on.'],
-      'the-instructor': ['Train like you fight. Equip like you mean it.','Rep 500 performs identical to rep 1.','Equipment reliability is not optional.','Better tools build better operators.','Zero training failures across 18 years.'],
-      'the-quartermaster': ['One purchase order. Lifetime of service.','Zero replacement requisitions filed. Ever.','Total cost of ownership equals purchase price.','No maintenance contracts. No consumables.','Domestic sourcing. Days, not months.'],
-      'the-patriot': ['American steel. American hands. American guarantee.','Built in Fayetteville, NC for those who serve','Every tool supports American manufacturing','No foreign dependency. No compromises.','98% aluminum recycling. American responsibility.']
-    };
-    if (voicePhrases[voiceId]) {
-      typedPhrases = voicePhrases[voiceId];
-      phraseIdx = 0; charIdx = 0; isDeleting = false;
-    }
-    options.forEach(function(o) { o.classList.toggle('active', o.dataset.voiceId === voiceId); });
-    localStorage.setItem('breaching-voice', voiceId);
-  }
-
-  toggle.addEventListener('click', function() { panel.classList.toggle('open'); });
-  options.forEach(function(opt) {
-    opt.addEventListener('click', function() { applyVoice(opt.dataset.voiceId); panel.classList.remove('open'); });
-  });
-  document.addEventListener('click', function(e) { if (!e.target.closest('.voice-switcher')) panel.classList.remove('open'); });
-  if (saved !== 'the-operator') setTimeout(function() { applyVoice(saved); }, 100);
-})();
-
-/* ==========================================================================
-   10 CANVAS ANIMATIONS
-   ========================================================================== */
-const canvas=document.getElementById('bg-canvas');
-const ctx=canvas.getContext('2d');
-let W,H;
-function resizeCanvas(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
-resizeCanvas();
-window.addEventListener('resize',()=>{resizeCanvas();if(ANIMS[currentAnim]&&ANIMS[currentAnim].init)ANIMS[currentAnim].init()});
-
-function getPC(){return getComputedStyle(document.documentElement).getPropertyValue('--particle-color').trim()||'255,107,0'}
-const LIGHT_THEME='__none__';
-function isLightTheme(){return document.documentElement.getAttribute('data-theme')===LIGHT_THEME}
-let compassActive=ls.get('compass','off')==='on';
-
-const ANIMS={};
-let animState={};
-let currentAnim=ls.get('anim','particles');
-
-/* ---- 1. PARTICLES ---- */
-ANIMS.particles={
-  init(){
-    const count=compassActive?260:65;
-    animState.parts=[];
-    for(let i=0;i<count;i++){
-      animState.parts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*1.5,vy:(Math.random()-.5)*1.5});
-    }
-  },
-  tick(){
-    ctx.clearRect(0,0,W,H);
-    const pc=getPC();const parts=animState.parts;if(!parts)return;
-    parts.forEach(p=>{
-      const dx=p.x-mx,dy=p.y-my,dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<180&&dist>0){const f=((180-dist)/180)*3;p.vx+=dx/dist*f;p.vy+=dy/dist*f}
-      p.vx*=0.99;p.vy*=0.99;p.x+=p.vx;p.y+=p.vy;
-      if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-    });
-    for(let i=0;i<parts.length;i++){
-      for(let j=i+1;j<parts.length;j++){
-        const dx=parts[i].x-parts[j].x,dy=parts[i].y-parts[j].y,d=dx*dx+dy*dy;
-        if(d<19600){
-          ctx.strokeStyle=`rgba(${pc},${1-d/19600})`;ctx.lineWidth=0.6;
-          ctx.beginPath();ctx.moveTo(parts[i].x,parts[i].y);ctx.lineTo(parts[j].x,parts[j].y);ctx.stroke();
-        }
-      }
-    }
-    parts.forEach(p=>{ctx.fillStyle=`rgba(${pc},0.7)`;ctx.beginPath();ctx.arc(p.x,p.y,2,0,Math.PI*2);ctx.fill()});
-  }
-};
-
-/* ---- 2. MATRIX RAIN ---- */
-ANIMS.matrix={
-  init(){
-    const fs=16;const cols=Math.ceil(W/fs);
-    animState.drops=Array.from({length:cols},()=>Math.random()*H/fs|0);
-    animState.fs=fs;animState.cols=cols;
-  },
-  tick(){
-    const{drops,fs,cols}=animState;if(!drops)return;
-    const pc=getPC();
-    const bg='rgba(10,10,10,0.06)';
-    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-    ctx.font=fs+'px JetBrains Mono,monospace';
-    for(let i=0;i<cols;i++){
-      const dx=i*fs-mx,dy=drops[i]*fs-my;
-      if(Math.sqrt(dx*dx+dy*dy)<120)continue;
-      const ch=String.fromCharCode(0x30+Math.random()*94|0);
-      const bright=Math.random()<0.08;
-      ctx.fillStyle=bright?`rgba(${pc},1)`:`rgba(${pc},0.4)`;
-      ctx.fillText(ch,i*fs,drops[i]*fs);
-      if(drops[i]*fs>H&&Math.random()>0.97)drops[i]=0;
-      drops[i]++;
-    }
-  }
-};
-
-/* ---- 3. STARFIELD ---- */
-ANIMS.starfield={
-  init(){
-    const count=compassActive?1600:400;
-    animState.stars=Array.from({length:count},()=>({x:Math.random()*W-W/2,y:Math.random()*H-H/2,z:Math.random()*W}));
-  },
-  tick(){
-    ctx.clearRect(0,0,W,H);const pc=getPC();
-    const stars=animState.stars;if(!stars)return;
-    const cx=(mx-W/2)*0.001,cy=(my-H/2)*0.001;
-    stars.forEach(s=>{
-      s.z-=compassActive?6:3;
-      if(s.z<1){s.x=Math.random()*W-W/2;s.y=Math.random()*H-H/2;s.z=W}
-      const k=128/s.z;
-      const sx=(s.x+cx*s.z)*k+W/2;
-      const sy=(s.y+cy*s.z)*k+H/2;
-      const pz=s.z+3;const pk=128/pz;
-      const px=(s.x+cx*pz)*pk+W/2;
-      const py=(s.y+cy*pz)*pk+H/2;
-      const alpha=1-s.z/W;const size=Math.max(0.5,(1-s.z/W)*2.5);
-      ctx.strokeStyle=`rgba(${pc},${alpha})`;ctx.lineWidth=size;
-      ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(sx,sy);ctx.stroke();
-    });
-  }
-};
-
-/* ---- 4. AURORA WAVES ---- */
-ANIMS.aurora={
-  init(){animState.t=0},
-  tick(){
-    ctx.clearRect(0,0,W,H);const pc=getPC();
-    animState.t+=0.005;const t=animState.t;
-    const mxN=mx/W,myN=my/H;
-    for(let b=0;b<5;b++){
-      ctx.beginPath();ctx.moveTo(0,H);
-      for(let x=0;x<=W;x+=4){
-        const n=x/W;
-        const y=H*0.4+Math.sin(n*4+t+b*0.7+mxN*2)*80+Math.sin(n*7+t*1.3+b)*40+Math.sin(n*11+t*0.7)*20+(myN-0.5)*60;
-        ctx.lineTo(x,y);
-      }
-      ctx.lineTo(W,H);ctx.closePath();
-      ctx.fillStyle=`rgba(${pc},${0.08-b*0.01})`;ctx.fill();
-    }
-  }
-};
-
-/* ---- 5. FIREFLIES ---- */
-ANIMS.fireflies={
-  init(){
-    const count=compassActive?200:50;
-    animState.flies=Array.from({length:count},()=>({
-      x:Math.random()*W,y:Math.random()*H,vx:0,vy:0,
-      r:3+Math.random()*5,phase:Math.random()*Math.PI*2,speed:0.5+Math.random()*1.5
-    }));
-    animState.t=0;
-  },
-  tick(){
-    ctx.clearRect(0,0,W,H);const pc=getPC();
-    animState.t+=0.02;const t=animState.t;
-    const flies=animState.flies;if(!flies)return;
-    flies.forEach(f=>{
-      const dx=f.x-mx,dy=f.y-my,dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<150&&dist>0){const force=((150-dist)/150)*2;f.vx+=dx/dist*force;f.vy+=dy/dist*force}
-      f.vx+=Math.sin(t*f.speed+f.phase)*0.1;
-      f.vy+=Math.cos(t*f.speed*0.7+f.phase)*0.1;
-      f.vx*=0.97;f.vy*=0.97;
-      f.x+=f.vx;f.y+=f.vy;
-      if(f.x<-20)f.x=W+20;if(f.x>W+20)f.x=-20;
-      if(f.y<-20)f.y=H+20;if(f.y>H+20)f.y=-20;
-      const glow=0.5+0.5*Math.sin(t*2+f.phase);
-      const grad=ctx.createRadialGradient(f.x,f.y,0,f.x,f.y,f.r*4);
-      grad.addColorStop(0,`rgba(${pc},${0.6*glow})`);
-      grad.addColorStop(1,'transparent');
-      ctx.fillStyle=grad;ctx.beginPath();ctx.arc(f.x,f.y,f.r*4,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle=`rgba(${pc},${glow})`;ctx.beginPath();ctx.arc(f.x,f.y,f.r,0,Math.PI*2);ctx.fill();
-    });
-  }
-};
-
-/* ---- 6. GEOMETRIC MESH ---- */
-ANIMS.mesh={
-  init(){
-    const sp=80;animState.nodes=[];animState.sp=sp;
-    for(let x=-sp;x<=W+sp;x+=sp){
-      for(let y=-sp;y<=H+sp;y+=sp){
-        animState.nodes.push({ox:x,oy:y,x:x,y:y});
-      }
-    }
-  },
-  tick(){
-    ctx.clearRect(0,0,W,H);const pc=getPC();
-    const nodes=animState.nodes;const sp=animState.sp;if(!nodes)return;
-    nodes.forEach(n=>{
-      const dx=n.x-mx,dy=n.y-my,dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<200&&dist>0){
-        const push=((200-dist)/200)*40;
-        n.x=n.ox+dx/dist*push;
-        n.y=n.oy+dy/dist*push;
-      }else{
-        n.x+=(n.ox-n.x)*0.1;
-        n.y+=(n.oy-n.y)*0.1;
-      }
-    });
-    const maxD=sp*1.5;
-    for(let i=0;i<nodes.length;i++){
-      for(let j=i+1;j<nodes.length;j++){
-        const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<maxD){
-          ctx.strokeStyle=`rgba(${pc},${(1-d/maxD)*0.3})`;ctx.lineWidth=0.5;
-          ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.stroke();
-        }
-      }
-    }
-    nodes.forEach(n=>{ctx.fillStyle=`rgba(${pc},0.5)`;ctx.beginPath();ctx.arc(n.x,n.y,1.5,0,Math.PI*2);ctx.fill()});
-  }
-};
-
-/* ---- 7. LIGHTNING ---- */
-ANIMS.lightning={
-  init(){animState.bolts=[];animState.frame=0},
-  tick(){
-    const pc=getPC();
-    const bg='rgba(10,10,10,0.15)';
-    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-    animState.frame++;
-    const interval=compassActive?10:40;
-    if(animState.frame%interval===0){
-      const sx=Math.random()*W;
-      animState.bolts.push({points:genBolt(sx,0,mx||W/2,my||H/2,6),life:20});
-    }
-    animState.bolts=animState.bolts.filter(b=>b.life>0);
-    animState.bolts.forEach(b=>{
-      const alpha=b.life/20;
-      ctx.strokeStyle=`rgba(${pc},${alpha*0.3})`;ctx.lineWidth=6;ctx.beginPath();
-      b.points.forEach((p,i)=>{i===0?ctx.moveTo(p[0],p[1]):ctx.lineTo(p[0],p[1])});ctx.stroke();
-      ctx.strokeStyle=`rgba(${pc},${alpha})`;ctx.lineWidth=2;ctx.beginPath();
-      b.points.forEach((p,i)=>{i===0?ctx.moveTo(p[0],p[1]):ctx.lineTo(p[0],p[1])});ctx.stroke();
-      b.life--;
-    });
-  }
-};
-function genBolt(x1,y1,x2,y2,depth){
-  if(depth===0)return[[x1,y1],[x2,y2]];
-  const mx2=(x1+x2)/2+(Math.random()-.5)*(y2-y1)*0.3;
-  const my2=(y1+y2)/2+(Math.random()-.5)*Math.abs(x2-x1)*0.3;
-  let pts=[...genBolt(x1,y1,mx2,my2,depth-1),...genBolt(mx2,my2,x2,y2,depth-1).slice(1)];
-  if(depth>2&&Math.random()<0.3){
-    const bx=mx2+(Math.random()-.5)*100;
-    const by=my2+50+Math.random()*100;
-    pts=pts.concat(genBolt(mx2,my2,bx,by,depth-2));
-  }
-  return pts;
-}
-
-/* ---- 8. BUBBLES ---- */
-ANIMS.bubbles={
-  init(){
-    const count=compassActive?160:40;
-    animState.bubbles=Array.from({length:count},()=>({
-      x:Math.random()*W,y:H+Math.random()*H,r:8+Math.random()*20,speed:0.5+Math.random()*1.5,phase:Math.random()*Math.PI*2
-    }));
-    animState.t=0;
-  },
-  tick(){
-    ctx.clearRect(0,0,W,H);const pc=getPC();
-    animState.t+=0.02;const t=animState.t;
-    const bubs=animState.bubbles;if(!bubs)return;
-    bubs.forEach(b=>{
-      b.y-=b.speed;b.x+=Math.sin(t+b.phase)*0.5;
-      if(b.y<-b.r*2){b.y=H+b.r*2;b.x=Math.random()*W}
-      const dx=b.x-mx,dy=b.y-my,dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<180&&dist>0){
-        const f=((180-dist)/180)*2;
-        b.x+=-dy/dist*f;b.y+=dx/dist*f;
-      }
-      ctx.strokeStyle=`rgba(${pc},0.3)`;ctx.lineWidth=1;
-      ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);ctx.stroke();
-      const hg=ctx.createRadialGradient(b.x-b.r*0.3,b.y-b.r*0.3,0,b.x,b.y,b.r);
-      hg.addColorStop(0,`rgba(${pc},0.15)`);hg.addColorStop(1,'transparent');
-      ctx.fillStyle=hg;ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);ctx.fill();
-    });
-  }
-};
-
-/* ---- 9. DNA HELIX ---- */
-ANIMS.dna={
-  init(){animState.t=0;animState.nodes=60},
-  tick(){
-    ctx.clearRect(0,0,W,H);const pc=getPC();
-    const n=animState.nodes;
-    const mxSpeed=(mx/W-0.5)*0.08;
-    const myTilt=(my/H-0.5)*100;
-    animState.t+=0.02+mxSpeed;const t=animState.t;
-    const cxc=W/2,cyc=H/2;const radiusBase=120;
-    const pts=[];
-    for(let i=0;i<n;i++){
-      const angle=t+i*(Math.PI*2/30);
-      const yPos=cyc-n*5+i*10+myTilt;
-      const r=radiusBase+Math.sin(angle*0.3)*20;
-      const z1=Math.sin(angle);const z2=Math.sin(angle+Math.PI);
-      pts.push({x:cxc+Math.cos(angle)*r,y:yPos,z:z1,strand:0,i});
-      pts.push({x:cxc+Math.cos(angle+Math.PI)*r,y:yPos,z:z2,strand:1,i});
-    }
-    pts.sort((a,b)=>a.z-b.z);
-    for(let i=0;i<n;i+=3){
-      const angle=t+i*(Math.PI*2/30);
-      const yPos=cyc-n*5+i*10+myTilt;
-      const r=radiusBase+Math.sin(angle*0.3)*20;
-      const x1=cxc+Math.cos(angle)*r;
-      const x2=cxc+Math.cos(angle+Math.PI)*r;
-      ctx.strokeStyle=`rgba(${pc},0.15)`;ctx.lineWidth=1;
-      ctx.beginPath();ctx.moveTo(x1,yPos);ctx.lineTo(x2,yPos);ctx.stroke();
-    }
-    pts.forEach(p=>{
-      const alpha=0.3+(p.z+1)/2*0.5;
-      const size=2+(p.z+1)/2*3;
-      ctx.fillStyle=`rgba(${pc},${alpha})`;
-      ctx.beginPath();ctx.arc(p.x,p.y,size,0,Math.PI*2);ctx.fill();
-    });
-  }
-};
-
-/* ---- 10. LIQUID BLOBS ---- */
-ANIMS.blobs={
-  init(){
-    const count=compassActive?24:8;
-    animState.blobs=Array.from({length:count},()=>({
-      x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*2,vy:(Math.random()-.5)*2,r:40+Math.random()*60
-    }));
-    animState.oc=document.createElement('canvas');
-    const scale=4;
-    animState.oc.width=Math.ceil(W/scale);animState.oc.height=Math.ceil(H/scale);
-    animState.octx=animState.oc.getContext('2d');
-    animState.scale=scale;
-  },
-  tick(){
-    const blobs=animState.blobs;if(!blobs)return;
-    const pc=getPC();const s=animState.scale;
-    const ow=animState.oc.width,oh=animState.oc.height;
-    const octx=animState.octx;
-    blobs.forEach(b=>{
-      const dx=mx-b.x,dy=my-b.y,dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist>0){b.vx+=dx/dist*0.08;b.vy+=dy/dist*0.08}
-      b.vx*=0.99;b.vy*=0.99;b.x+=b.vx;b.y+=b.vy;
-      if(b.x<-b.r)b.x=W+b.r;if(b.x>W+b.r)b.x=-b.r;
-      if(b.y<-b.r)b.y=H+b.r;if(b.y>H+b.r)b.y=-b.r;
-    });
-    const id=octx.createImageData(ow,oh);
-    const pcs=pc.split(',').map(Number);
-    for(let py=0;py<oh;py++){
-      for(let px=0;px<ow;px++){
-        let sum=0;const rx=px*s,ry=py*s;
-        blobs.forEach(b=>{const dx=rx-b.x,dy=ry-b.y;sum+=b.r*b.r/(dx*dx+dy*dy+1)});
-        const idx=(py*ow+px)*4;
-        if(sum>0.7){
-          const a=Math.min(1,(sum-0.7)*1.5);
-          id.data[idx]=pcs[0];id.data[idx+1]=pcs[1];id.data[idx+2]=pcs[2];id.data[idx+3]=a*120|0;
-        }
-      }
-    }
-    octx.putImageData(id,0,0);
-    ctx.clearRect(0,0,W,H);
-    ctx.drawImage(animState.oc,0,0,W,H);
-    blobs.forEach(b=>{
-      const g=ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r*0.8);
-      g.addColorStop(0,`rgba(${pc},0.08)`);g.addColorStop(1,'transparent');
-      ctx.fillStyle=g;ctx.beginPath();ctx.arc(b.x,b.y,b.r*0.8,0,Math.PI*2);ctx.fill();
-    });
-  }
-};
-
-/* ---- Animation Switcher ---- */
-function switchAnim(name){
-  animState={};ctx.clearRect(0,0,W,H);currentAnim=name;
-  if(ANIMS[name])ANIMS[name].init();
-  ls.set('anim',name);
-  $$('.anim-dot').forEach(d=>{
-    d.classList.toggle('active',d.dataset.anim===name);
-    d.setAttribute('aria-checked',String(d.dataset.anim===name));
-  });
-}
-$$('.anim-dot').forEach(d=>{
-  d.addEventListener('click',()=>switchAnim(d.dataset.anim));
-  d.addEventListener('keydown',e=>{if(e.key==='Enter')switchAnim(d.dataset.anim)});
-});
-
-/* Init current animation */
-if(!ANIMS[currentAnim])currentAnim='particles';
-switchAnim(currentAnim);
-function animLoop(){if(ANIMS[currentAnim]&&ANIMS[currentAnim].tick)ANIMS[currentAnim].tick();requestAnimationFrame(animLoop)}
 animLoop();
 
-/* ---- BREACH POWER BUTTON ---- */
-const compassBtn=$('.compass-btn');
-function toggleCompass(){
-  compassActive=!compassActive;
-  ls.set('compass',compassActive?'on':'off');
-  compassBtn.classList.toggle('active',compassActive);
-  switchAnim(currentAnim);
-  if(compassActive){
-    document.body.style.transition='filter .15s';
-    document.body.style.filter='brightness(1.3)';
-    setTimeout(()=>{document.body.style.filter='';},150);
-    /* Screen shake */
-    document.body.style.animation='screenShake 0.4s ease';
-    setTimeout(()=>{document.body.style.animation='';},400);
-  }
+/* Breach mode */
+var bb=$('#breachBtn');
+function setBreach(on){
+  breachActive=on;lss('breach',on?'on':'off');
+  bb.classList.toggle('active',on);
+  initParticles();
+  if(on){document.body.style.animation='shake .3s';setTimeout(function(){document.body.style.animation=''},300)}
 }
-if(compassBtn){
-  compassBtn.classList.toggle('active',compassActive);
-  compassBtn.addEventListener('click',toggleCompass);
-  compassBtn.addEventListener('keydown',e=>{if(e.key==='Enter')toggleCompass()});
-}
+bb.addEventListener('click',function(){setBreach(!breachActive)});
+if(breachActive)bb.classList.add('active');
 
-/* Screen shake keyframes */
-var shakeStyle=document.createElement('style');
-shakeStyle.textContent='@keyframes screenShake{0%,100%{transform:translateX(0)}10%{transform:translateX(-4px)}20%{transform:translateX(4px)}30%{transform:translateX(-3px)}40%{transform:translateX(3px)}50%{transform:translateX(-2px)}60%{transform:translateX(2px)}70%{transform:translateX(-1px)}80%{transform:translateX(1px)}}';
-document.head.appendChild(shakeStyle);
-
-/* ---- END ---- */
+/* Shake keyframes */
+var ss=document.createElement('style');
+ss.textContent='@keyframes shake{0%,100%{transform:translateX(0)}15%{transform:translateX(-3px)}30%{transform:translateX(3px)}45%{transform:translateX(-2px)}60%{transform:translateX(2px)}75%{transform:translateX(-1px)}90%{transform:translateX(1px)}}';
+document.head.appendChild(ss);
 })();
 </script>
 </body>
