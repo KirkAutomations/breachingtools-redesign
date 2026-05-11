@@ -215,8 +215,52 @@ section{position:relative;z-index:2;padding:80px 24px}
 .breach-btn.active .breach-switch{border-color:var(--accent)}
 .breach-btn.active .breach-switch::after{left:16px;background:var(--accent)}
 
-/* ========== SUBTLE PARTICLES ========== */
-#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5}
+/* ========== BACKGROUND ANIMATIONS ========== */
+#bg-anim{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+
+/* --- FRACTURE: Impact cracks from ram strikes --- */
+.anim-fracture .crack-group{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
+.anim-fracture .impact-flash{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--accent);transform:translate(-50%,-50%);animation:impact-glow 1.8s ease-out forwards}
+.anim-fracture .crack{position:absolute;width:1.5px;height:0;background:linear-gradient(to bottom,var(--accent),transparent);transform-origin:top center;animation:crack-spread var(--dur,2s) ease-out forwards}
+@keyframes impact-glow{
+  0%{opacity:.8;box-shadow:0 0 20px 10px var(--accent)}
+  40%{opacity:.4;box-shadow:0 0 10px 4px var(--accent)}
+  100%{opacity:0;box-shadow:0 0 0 0 transparent}
+}
+@keyframes crack-spread{
+  0%{height:0;opacity:.6}
+  30%{height:var(--len,80px);opacity:.4}
+  100%{height:var(--len,80px);opacity:0}
+}
+
+/* --- THERMAL: IR tactical scanner --- */
+.anim-thermal::before{content:'';position:absolute;left:0;width:100%;height:2px;background:var(--accent);box-shadow:0 0 40px 10px var(--accent),0 -30px 80px 6px var(--accent-dim),0 30px 80px 6px var(--accent-dim);opacity:.4;animation:thermal-sweep 5s linear infinite;z-index:1}
+.anim-thermal::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.03) 3px,rgba(0,0,0,0.03) 4px);opacity:.5;pointer-events:none}
+.anim-thermal .heat-zone{position:absolute;border-radius:50%;background:radial-gradient(circle,var(--accent-dim),transparent 70%);opacity:0;animation:heat-pulse var(--dur,4s) var(--delay,0s) ease-in-out infinite;pointer-events:none}
+@keyframes thermal-sweep{0%{top:-2%}100%{top:102%}}
+@keyframes heat-pulse{0%,100%{opacity:0;transform:scale(.8)}50%{opacity:.18;transform:scale(1.1)}}
+
+/* --- SHOCKWAVE: Explosive breach blast rings --- */
+.anim-shockwave .ring-origin{position:absolute;transform:translate(-50%,-50%);pointer-events:none}
+.anim-shockwave .blast-core{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--accent);transform:translate(-50%,-50%);animation:core-flash 1.2s ease-out forwards}
+.anim-shockwave .ring{position:absolute;border:1.5px solid var(--accent);border-radius:50%;transform:translate(-50%,-50%);width:0;height:0;animation:ring-blast var(--dur,3s) ease-out forwards}
+@keyframes core-flash{
+  0%{opacity:.8;box-shadow:0 0 20px 8px var(--accent)}
+  100%{opacity:0;box-shadow:0 0 0 0 transparent}
+}
+@keyframes ring-blast{
+  0%{width:0;height:0;opacity:.35;border-width:2px}
+  100%{width:var(--size,300px);height:var(--size,300px);opacity:0;border-width:.5px}
+}
+
+/* ========== ANIMATION SWITCHER ========== */
+.anim-switch{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:900;display:flex;flex-direction:column;gap:6px;padding:8px 6px;background:var(--bg-card);border:1px solid var(--border)}
+.anim-switch .as-label{writing-mode:vertical-rl;font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;text-align:center}
+.as-btn{width:28px;height:28px;cursor:pointer;border:1px solid var(--border);background:var(--bg-alt);display:flex;align-items:center;justify-content:center;transition:all .2s;padding:0}
+.as-btn:hover{border-color:var(--accent)}
+.as-btn.active{border-color:var(--accent);box-shadow:0 0 6px var(--accent-dim)}
+.as-btn svg{width:16px;height:16px;color:var(--text-muted);transition:color .2s}
+.as-btn.active svg,.as-btn:hover svg{color:var(--accent)}
 
 /* ========== REVEAL ========== */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
@@ -246,9 +290,10 @@ section{position:relative;z-index:2;padding:80px 24px}
   .products-grid{grid-template-columns:1fr 1fr}
   .catalog-grid{grid-template-columns:1fr}
   .theme-switch{right:8px;padding:6px 4px}
+  .anim-switch{left:8px;padding:6px 4px}
 }
 @media print{
-  .nav,.theme-switch,.breach-btn,.grain,#bg-canvas,#scroll-progress,.hamburger,.mobile-nav{display:none !important}
+  .nav,.theme-switch,.breach-btn,.grain,#bg-anim,.anim-switch,#scroll-progress,.hamburger,.mobile-nav{display:none !important}
   body{background:#fff;color:#000}
   section{padding:24px 0;break-inside:avoid}
   .hero{min-height:auto;padding:40px 0}
@@ -258,7 +303,7 @@ section{position:relative;z-index:2;padding:80px 24px}
 </head>
 <body>
 <div class="grain"></div>
-<canvas id="bg-canvas"></canvas>
+<div id="bg-anim"></div>
 <div id="scroll-progress"></div>
 
 <!-- NAV -->
@@ -496,6 +541,20 @@ section{position:relative;z-index:2;padding:80px 24px}
   <div class="footer-bottom"><p class="footer-credit">&copy; <span id="year"></span> BCM Inc. / Double-Tap Breaching Tools. All rights reserved. Redesigned by <a href="https://kirkautomations.com" target="_blank" rel="noopener" style="color:var(--accent)">Kirk Automations</a></p></div>
 </footer>
 
+<!-- ANIMATION SWITCHER -->
+<div class="anim-switch" role="radiogroup" aria-label="Background Animation">
+  <span class="as-label">FX</span>
+  <button class="as-btn active" data-anim="fracture" role="radio" aria-checked="true" aria-label="Fracture" title="Fracture">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="3" y2="14"/><line x1="8" y1="2" x2="13" y2="14"/><line x1="8" y1="2" x2="8" y2="15"/><line x1="6" y1="8" x2="2" y2="11"/><line x1="10" y1="8" x2="14" y2="11"/></svg>
+  </button>
+  <button class="as-btn" data-anim="thermal" role="radio" aria-checked="false" aria-label="Thermal" title="Thermal">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="1" y1="4" x2="15" y2="4"/><line x1="1" y1="8" x2="15" y2="8"/><line x1="1" y1="12" x2="15" y2="12"/><circle cx="8" cy="8" r="3" stroke-dasharray="2 1"/></svg>
+  </button>
+  <button class="as-btn" data-anim="shockwave" role="radio" aria-checked="false" aria-label="Shockwave" title="Shockwave">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2"/><circle cx="8" cy="8" r="5"/><circle cx="8" cy="8" r="7" stroke-dasharray="2 2"/></svg>
+  </button>
+</div>
+
 <!-- THEME SWITCHER -->
 <div class="theme-switch" role="radiogroup" aria-label="Theme">
   <span class="ts-label">Theme</span>
@@ -551,58 +610,161 @@ function setTheme(t){ct=t;document.documentElement.setAttribute('data-theme',t);
 setTheme(ct);
 $$('.ts-dot').forEach(function(d){d.addEventListener('click',function(){setTheme(d.dataset.theme)})});
 
-/* Subtle particles */
-var canvas=$('#bg-canvas'),ctx=canvas.getContext('2d');
-var W,H,particles=[],breachActive=lsg('breach','off')==='on';
-function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;initParticles()}
-function initParticles(){
-  var count=breachActive?120:30;
-  particles=[];
-  for(var i=0;i<count;i++)particles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:1+Math.random()*1.5});
-}
-resize();
-window.addEventListener('resize',resize);
+/* Background Animation System */
+var bgAnim=$('#bg-anim');
+var breachActive=lsg('breach','off')==='on';
+var currentAnim=lsg('anim','fracture');
+var animTimers=[];
 
-function getAccent(){
-  var cs=getComputedStyle(document.documentElement);
-  var a=cs.getPropertyValue('--accent').trim();
-  /* Convert hex to rgb */
-  if(a.charAt(0)==='#'){var r=parseInt(a.substr(1,2),16),g=parseInt(a.substr(3,2),16),b=parseInt(a.substr(5,2),16);return r+','+g+','+b}
-  return '212,160,23';
+function clearAnimTimers(){
+  animTimers.forEach(function(t){clearInterval(t);clearTimeout(t)});
+  animTimers=[];
+  if(bgAnim)bgAnim.innerHTML='';
 }
 
-function animLoop(){
-  ctx.clearRect(0,0,W,H);
-  var pc=getAccent();
-  particles.forEach(function(p){
-    p.x+=p.vx;p.y+=p.vy;
-    if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-    ctx.fillStyle='rgba('+pc+',0.25)';
-    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+function setAnim(name){
+  clearAnimTimers();
+  currentAnim=name;lss('anim',name);
+  if(bgAnim){bgAnim.className='';bgAnim.classList.add('anim-'+name)}
+  $$('.as-btn').forEach(function(b){
+    var a=b.dataset.anim===name;
+    b.classList.toggle('active',a);
+    b.setAttribute('aria-checked',a);
   });
-  /* Lines between close particles */
-  if(breachActive){
-    for(var i=0;i<particles.length;i++){
-      for(var j=i+1;j<particles.length;j++){
-        var dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=dx*dx+dy*dy;
-        if(d<25000){ctx.strokeStyle='rgba('+pc+','+(1-d/25000)*0.15+')';ctx.lineWidth=0.5;ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke()}
+  if(name==='fracture')initFracture();
+  else if(name==='thermal')initThermal();
+  else if(name==='shockwave')initShockwave();
+}
+
+/* FRACTURE - Impact cracks radiating from ram strike points */
+function initFracture(){
+  var rate=breachActive?1600:3000;
+  function spawn(){
+    var x=Math.random()*window.innerWidth;
+    var y=Math.random()*window.innerHeight;
+    var g=document.createElement('div');
+    g.className='crack-group';
+    var f=document.createElement('div');
+    f.className='impact-flash';
+    f.style.left=x+'px';f.style.top=y+'px';
+    g.appendChild(f);
+    var n=breachActive?(5+Math.floor(Math.random()*5)):(3+Math.floor(Math.random()*4));
+    var base=Math.random()*360;
+    for(var i=0;i<n;i++){
+      var angle=base+(360/n)*i+(Math.random()*24-12);
+      var len=40+Math.random()*140;
+      var dur=1.2+Math.random()*1.8;
+      var c=document.createElement('div');
+      c.className='crack';
+      c.style.left=x+'px';c.style.top=y+'px';
+      c.style.transform='rotate('+angle+'deg)';
+      c.style.setProperty('--len',len+'px');
+      c.style.setProperty('--dur',dur+'s');
+      g.appendChild(c);
+      if(Math.random()<0.35){
+        var ba=angle+(Math.random()>0.5?1:-1)*(18+Math.random()*30);
+        var bl=len*(0.25+Math.random()*0.35);
+        var bs=len*(0.3+Math.random()*0.4);
+        var rad=angle*Math.PI/180;
+        var bx=x+Math.sin(rad)*bs;
+        var by=y-Math.cos(rad)*bs;
+        var br=document.createElement('div');
+        br.className='crack';
+        br.style.left=bx+'px';br.style.top=by+'px';
+        br.style.transform='rotate('+ba+'deg)';
+        br.style.setProperty('--len',bl+'px');
+        br.style.setProperty('--dur',(dur+0.4)+'s');
+        g.appendChild(br);
       }
     }
+    bgAnim.appendChild(g);
+    var rm=setTimeout(function(){if(g.parentNode)g.remove()},5000);
+    animTimers.push(rm);
   }
-  requestAnimationFrame(animLoop);
+  spawn();
+  var iv=setInterval(spawn,rate);
+  animTimers.push(iv);
 }
-animLoop();
+
+/* THERMAL - IR scanning line with heat signatures */
+function initThermal(){
+  var count=breachActive?7:4;
+  for(var i=0;i<count;i++){
+    var hz=document.createElement('div');
+    hz.className='heat-zone';
+    var size=100+Math.random()*200;
+    hz.style.width=size+'px';hz.style.height=size+'px';
+    hz.style.left=(Math.random()*100)+'%';
+    hz.style.top=(Math.random()*100)+'%';
+    hz.style.setProperty('--dur',(3+Math.random()*4)+'s');
+    hz.style.setProperty('--delay',(Math.random()*3)+'s');
+    bgAnim.appendChild(hz);
+  }
+  var iv=setInterval(function(){
+    if(bgAnim.querySelectorAll('.heat-zone').length>12)return;
+    var hz=document.createElement('div');
+    hz.className='heat-zone';
+    var size=80+Math.random()*180;
+    hz.style.width=size+'px';hz.style.height=size+'px';
+    hz.style.left=(Math.random()*100)+'%';
+    hz.style.top=(Math.random()*100)+'%';
+    hz.style.setProperty('--dur',(3+Math.random()*4)+'s');
+    hz.style.setProperty('--delay','0s');
+    bgAnim.appendChild(hz);
+    var rm=setTimeout(function(){if(hz.parentNode)hz.remove()},15000);
+    animTimers.push(rm);
+  },5000);
+  animTimers.push(iv);
+}
+
+/* SHOCKWAVE - Concentric blast rings from detonation points */
+function initShockwave(){
+  var rate=breachActive?2000:3800;
+  function spawn(){
+    var x=Math.random()*window.innerWidth;
+    var y=Math.random()*window.innerHeight;
+    var g=document.createElement('div');
+    g.className='ring-origin';
+    g.style.left=x+'px';g.style.top=y+'px';
+    var core=document.createElement('div');
+    core.className='blast-core';
+    g.appendChild(core);
+    var nRings=breachActive?(4+Math.floor(Math.random()*3)):(2+Math.floor(Math.random()*3));
+    for(var i=0;i<nRings;i++){
+      var ring=document.createElement('div');
+      ring.className='ring';
+      var size=150+Math.random()*350;
+      var dur=1.5+Math.random()*2+i*0.4;
+      ring.style.setProperty('--size',size+'px');
+      ring.style.setProperty('--dur',dur+'s');
+      ring.style.animationDelay=(i*0.3)+'s';
+      g.appendChild(ring);
+    }
+    bgAnim.appendChild(g);
+    var rm=setTimeout(function(){if(g.parentNode)g.remove()},6000);
+    animTimers.push(rm);
+  }
+  spawn();
+  var iv=setInterval(spawn,rate);
+  animTimers.push(iv);
+}
+
+/* Animation switcher */
+$$('.as-btn').forEach(function(b){b.addEventListener('click',function(){setAnim(b.dataset.anim)})});
 
 /* Breach mode */
 var bb=$('#breachBtn');
 function setBreach(on){
   breachActive=on;lss('breach',on?'on':'off');
   bb.classList.toggle('active',on);
-  initParticles();
+  setAnim(currentAnim);
   if(on){document.body.style.animation='shake .3s';setTimeout(function(){document.body.style.animation=''},300)}
 }
 bb.addEventListener('click',function(){setBreach(!breachActive)});
 if(breachActive)bb.classList.add('active');
+
+/* Init animation */
+setAnim(currentAnim);
 
 /* Shake keyframes */
 var ss=document.createElement('style');
